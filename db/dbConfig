@@ -1,0 +1,3 @@
+-- para correr el script de la bd en consola
+
+sqlcmd -S .\SQLExpress -i SqlScript.sql
