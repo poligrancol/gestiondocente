@@ -52,7 +52,7 @@ Despues de esto, tus commits se relacionarán con tu usuario en GitHub.
 En este proyecto usamos dos tipos de ramas (branches):
 
 * **Branch de producción**: `master`, representa el entorno de producción, la aplicación en vivo.
-* **Branches de historias de usuarios**: E.G: `MA-1`, `MA-9`, `GP-19` etc. Estos branchs representan una funcionalidad especifica relacionada con historias de usuario.
+* **Branches de historias de usuarios**: E.G: `experiencia-empleado`, `exportacion-profesores`, `diseno-lista-usuarios` etc. Estos branchs representan una funcionalidad especifica relacionada con historias de usuario.
 
 
 Para empezar a trabajar en una nueva historia de usuario debes:
