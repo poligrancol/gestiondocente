@@ -10,6 +10,14 @@ Para correr este proyecto localmente debes **[clonarlo](https://help.github.com/
 1. Instalar cliente Git https://desktop.github.com/ ó usar Git desde la consola https://git-scm.com/
 2. Clonar este repositorio usando [GitHub Desltop](https://desktop.github.com/) ó desde la consola.
 
+## Creación de la base de datos
+
+Para tener una copia de la base de datos, debes correr este comando en el terminal:
+
+```bash
+sqlcmd -S .\SQLExpress -i BaseDeDatosV0.1.sql
+```
+
 ## ¿Como establecer tu nombre de usuario en Git?
 
 GitHub ofrece muchas opciones de colaboración a los miembros de cada repositorio, es por esto que es importante que establezcas tu nombre y correo en Git de tal manera que los commits que hagas se relacionen con tu usuario en GitHub.
@@ -30,13 +38,13 @@ Despues de esto, tus commits se relacionarán con tu usuario en GitHub.
 `MA-1 Added something...` or the Sentry issue number `#123 Fixes bug...`
 
 * También puedes usar Emojis para iniciar los mensajes de commit.
-    * :lollipop: `:lollipop:` when improving code format and structure
-    * :art: `:art:` when making visual changes
-    * :bug: `:bug:` when fixing bugs
-    * :memo: `:memo:` when writing documentation
-    * :fire: `:fire:` when removing unused code
-    * :sunny: `:sunny:` alternative emoji for a general improvement
-    * :white_check_mark: `:white_check_mark:` when fixing tests
+    * :lollipop: `:lollipop:` cuando se mejora la estructura del código.
+    * :art: `:art:` cuando se realizan cambios visuales.
+    * :bug: `:bug:` cuando se corrigen errores.
+    * :memo: `:memo:` cuando se escribe documentación.
+    * :fire: `:fire:` cuando se elimina codigo que no se usa.
+    * :sunny: `:sunny:` cuando se realiza una mejora en general.
+    * :white_check_mark: `:white_check_mark:` cuando se trabaja con pruebas unitarias.
 
 
 ## Flujo de trabajo
@@ -44,7 +52,6 @@ Despues de esto, tus commits se relacionarán con tu usuario en GitHub.
 En este proyecto usamos tres tipos de ramas(branches):
 
 * **Production branch**: `master`, represents the production environment, what's shown in the live app.
-* **Development branch**: `dev`, represents development or staging environment.
 * **Feature branches**: E.G: `MA-1`, `MA-9`, `GP-19` etc. These branches represent a feature related with a specific User story.
 
 
