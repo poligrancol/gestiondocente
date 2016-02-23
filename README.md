@@ -49,32 +49,17 @@ Despues de esto, tus commits se relacionarán con tu usuario en GitHub.
 
 ## Flujo de trabajo
 
-En este proyecto usamos tres tipos de ramas(branches):
+En este proyecto usamos dos tipos de ramas (branches):
 
-* **Production branch**: `master`, represents the production environment, what's shown in the live app.
-* **Feature branches**: E.G: `MA-1`, `MA-9`, `GP-19` etc. These branches represent a feature related with a specific User story.
+* **Branch de producción**: `master`, representa el entorno de producción, la aplicación en vivo.
+* **Branches de historias de usuarios**: E.G: `MA-1`, `MA-9`, `GP-19` etc. Estos branchs representan una funcionalidad especifica relacionada con historias de usuario.
 
 
 Para empezar a trabajar en una nueva historia de usuario debes:
 
-```bash
-# Start at the development branch.
-git checkout dev
+1. Crear un branch E.G: `experiencia-empleado`
+2. Realizar funcionalidad y hacer commit
+3. Hacer push de tu branch a GitHub
+4. Crear un [Pull Request](https://help.github.com/articles/using-pull-requests/)
+5. Esperar a que revise y se mezcle.
 
-# Get latest changes.
-git pull origin dev
-
-# Move to a branch with the name of the user story.
-git go <user story id E.G: MA-18>
-
-# Add changes.
-
-# Commit changes.
-g ca
-
-# Push changes and create pull request.
-g push
-
-# Go back to `dev` and pull again.
-git checkout ...
-```
