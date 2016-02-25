@@ -6,7 +6,7 @@ define([
     'text!templates/docente/ListarDatosBasicosTemplate.html',
     'text!templates/docente/EditarDatosBasicosTemplate.html',
 ], function ($, _, Backbone, ProfesorModel, ListarDatosBasicosTemplate, EditarDatosBasicosTemplate) {
- 
+
     var DatosBasicosView = Backbone.View.extend({
         className: "intro-section",
         el: $("#intro"),
@@ -56,7 +56,7 @@ define([
         almacenarDatosBasicos : function(){
             //this.model.sync("save",this.model,options);
             alert('Datos almacenados.');
-        }        
+        }
     });
     return DatosBasicosView;
 });

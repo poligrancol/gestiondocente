@@ -1,49 +1,52 @@
-// Filename: router.js
+//
+//  Main application file, here is where all the routes for the application
+//  are defined.
+//
+//  To learn more about Backbone routes head over to:
+//  http://codebeerstartups.com/2013/01/routers-in-backbone-js-learning-backbone-js/
+//
 define([
     'jquery',
     'underscore',
     'backbone',
     'views/DatosBasicos/DatosBasicosView',
     'views/Escolaridad/EscolaridadView',
-    /*'views/Buscar/BuscarDocente',
-    'views/ExperienciaLab/ExperienciaLabView',
-    'views/ExperienciaLab/EditarExperienciaLabView',
-    'views/ExperienciaLab/CrearExperienciaLabView'
-            /*'views/docente/lessonEndView'*/
-            // 'views/editor/editorView'
-], function ($, _, Backbone, DatosBasicosView, EscolaridadView) {
+    'views/Buscar/BuscarDocente',
+    // 'views/ExperienciaLab/ExperienciaLabView',
+    // 'views/ExperienciaLab/EditarExperienciaLabView',
+    // 'views/ExperienciaLab/CrearExperienciaLabView',
+    // 'views/docente/lessonEndView',
+    // 'views/editor/editorView',
+], function ($, _, Backbone, DatosBasicosView, EscolaridadView, BuscarDocenteView) {
 
+    // Main application router.
     var AppRouter = Backbone.Router.extend({
         routes: {
-            // Define some URL routes
-            //':id': 'show',
-            //'': 'default'
+            'buscar-docente': 'findTeacher',
         }
     });
 
+    //
+    // This function is called when app is run, make sure
+    // to add your routes here.
+    //
     var initialize = function () {
-        var app_router = new AppRouter;
-        var id = 1;
-        //var id = #sacar de la sesion
-        var datosBasicosView = new DatosBasicosView();
-        datosBasicosView.render(id);
-        
-        var escolaridadView = new EscolaridadView();
-        escolaridadView.render();
-        
-//
+        var app_router = new AppRouter();
+
+        // Find a teacher and renders the results template.
         //
-//var buscarDocenteView = new BuscarDocenteView();
-        //buscarDocenteView.render();
-        /*
-         * 
-         var experienciaView = new ExperienciaView();
-         experienciaView.render();
-         */
-        //app_router.on('route:show', function (id) {
-        //    datosBasicosView.render(id);
-        //});
-    }
+        //      /#buscar-docente/
+        //
+        app_router.on('route:findTeacher', function (name) {
+
+            // Renders the view.
+            var findTeacherView = new BuscarDocenteView();
+            findTeacherView.render();
+        });
+
+        // Have bookmarkable URLs.
+        Backbone.history.start();
+    };
 
     return {
         initialize: initialize
