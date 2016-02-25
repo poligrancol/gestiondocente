@@ -1,3 +1,15 @@
 /Logica/nbproject/private/
 /Logica/build/
 /Logica/dist/
+/Logica/web/*.js
+/Logica/web/*.html
+/Logica/web/*.css
+/Logica/web/*.gif
+/Logica/web/images
+
+# Netbeans specific.
+/Presentacion/nbproject/private/private.xml
+/Logica/web/WEB-INF/glassfish-resources.xml
+/Logica/nbproject/project.properties
+/Logica/setup/glassfish-resources.xml
+/Logica/src/conf/persistence.xml
