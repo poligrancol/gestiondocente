@@ -41,5 +41,5 @@ public class ApplicationConfig extends Application {
         resources.add(edu.poli.prap.gd.data.service.TituloFacadeREST.class);
         resources.add(edu.poli.prap.gd.data.util.CrossOriginResourceSharingFilter.class);
     }
-
+    
 }
