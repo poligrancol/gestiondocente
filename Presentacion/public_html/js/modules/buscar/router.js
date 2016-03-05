@@ -1,4 +1,4 @@
-//
+// //
 //  Main application file, here is where all the routes for the application
 //  are defined.
 //
@@ -9,19 +9,13 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'views/DatosBasicos/DatosBasicosView',
-    'views/Escolaridad/EscolaridadView',
     'views/Buscar/BuscarDocente',
-    // 'views/ExperienciaLab/ExperienciaLabView',
-    // 'views/ExperienciaLab/EditarExperienciaLabView',
-    // 'views/ExperienciaLab/CrearExperienciaLabView',
-    // 'views/docente/lessonEndView',
-    // 'views/editor/editorView',
-], function ($, _, Backbone, DatosBasicosView, EscolaridadView, BuscarDocenteView) {
+], function ($, _, Backbone, BuscarDocenteView) {
 
     // Main application router.
     var AppRouter = Backbone.Router.extend({
         routes: {
+            'buscar-docente': 'findTeacher',
         }
     });
 
@@ -31,6 +25,17 @@ define([
     //
     var initialize = function () {
         var app_router = new AppRouter();
+
+        // Find a teacher and renders the results template.
+        //
+        //      /#buscar-docente/
+        //
+        app_router.on('route:findTeacher', function (name) {
+
+            // Renders the view.
+            var findTeacherView = new BuscarDocenteView();
+            findTeacherView.render();
+        });
 
         // Have bookmarkable URLs.
         Backbone.history.start();
