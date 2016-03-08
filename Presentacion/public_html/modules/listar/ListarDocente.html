@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Listar Docente - Gestión Docente</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap Core CSS -->
+        <link href="../css/bootstrap.min.css" rel ="stylesheet"  />
+        <!-- Custom CSS -->
+        <link href="../css/scrolling-nav.css" rel="stylesheet">
+    </head>
+    <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+        <!-- jQuery -->
+        <script src="../js/jquery.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../js/bootstrap.min.js"></script>
+        <!-- Scrolling Nav JavaScript -->
+        <script src="../js/jquery.easing.min.js"></script>
+        <script src="../js/scrolling-nav.js"></script>
+        <!--Javascript Manejo de paginado y filtros-->
+        <script src="../Javascipt/dataTables.bootstrap.min.js"></script>
+        <script src="../Javascipt/jquery.dataTables.min.js"></script>
+        <!--Core Eventos-->
+        <script src="../Javascipt/ListarDocente.js"></script>
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header page-scroll">
+                    <img class="navbar-brand" src="../img/logo.png"/>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand page-scroll" href="#page-top">Listar <b>Docente</b></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav">
+                        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                        <li class="hidden">
+                            <a class="page-scroll" href="#page-top"></a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#about">Escolaridad</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#services">Experiencia</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#contact">Adjuntos</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+
+        <!-- Intro Section -->
+        <section id="intro" class="intro-section">
+                <br>
+                <br>
+                <br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel panel-primary">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading text-center"><h3>Listado de Docentes</h3></div>
+                            <!-- Table -->
+                            <table id="listarDocenteTabla" class="table table-striped table-bordered">
+
+                                <tr>
+
+                                   <th class="text-center"><strong>No.</strong>
+  <span class="glyphicon glyphicon-chevron-down btn-sm text-center" aria-hidden="true"></span>
+</th>
+
+                                    <th class="text-center"><strong>Id Identidad</strong><div class="input-group">
+  <span class="input-group-addon"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></span>
+  <input type="text" class="form-control" id="filterIdIdentificacion" placeholder="Id Identidad" aria-describedby="sizing-addon1">
+</div></th>
+                                    <th class="text-center"><strong>Nombres</strong><div class="input-group">
+  <span class="input-group-addon"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></span>
+  <input type="text" class="form-control" id="filterNombre" placeholder="Nombre" aria-describedby="sizing-addon1">
+</div></th>
+                                    <th class="text-center"><strong>Apellidos</strong><div class="input-group">
+  <span class="input-group-addon"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></span>
+  <input type="text" class="form-control" id="filterApellido" placeholder="Apellido" aria-describedby="sizing-addon1">
+</div></th>
+                                    <th class="text-center"><strong>Correos</strong><div class="input-group">
+  <span class="input-group-addon"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></span>
+  <input type="text" class="form-control" id="filterEmail" placeholder="Email" aria-describedby="sizing-addon1">
+</div></th>
+                                    <th class="text-center"><strong>Teléfonos</strong><div class="input-group">
+  <span class="input-group-addon"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></span>
+  <input type="text" class="form-control" id="filterTelefono" placeholder="Telefono" aria-describedby="sizing-addon1">
+</div></th>
+                                   <th class="text-center"><strong>Editar</strong>
+  <span class="glyphicon glyphicon-edit btn-sm text-center" aria-hidden="true"></span>
+</th>
+
+                                </tr>
+                                <tr><td class="text-center">1</td>
+                                    <td class="text-center">10278723987</td>
+                                    <td>Andres Felipe</td>
+                                    <td>Silva Pascuas</td>
+                                    <td>afsilvap@poligran.edu.co<br>felsip@gmail.com</td>
+                                    <td>3156784532<br>3956723</td>
+                                    <td><button type="button" class="btn btn-default btn-xs" onclick="editarDocente(1)">Editar</button></td>
+                                </tr>
+                                <tr><td class="text-center">1</td>
+                                    <td class="text-center">10278723987</td>
+                                    <td>Andres Felipe</td>
+                                    <td class="text-center">Silva Pascuas</td>
+                                    <td>afsilvap@poligran.edu.co <br>felsip@gmail.com</td>
+                                    <td>3156784532<br>3956723</td>
+                                    <td><button type="button" class="btn btn-default btn-xs" onclick="editarDocente(1)">Editar</button></td>
+                                </tr>
+                                <tr><td class="text-center">1</td>
+                                    <td class="text-center">10278723987</td>
+                                    <td>Andres Felipe</td>
+                                    <td class="text-center">Silva Pascuas</td>
+                                    <td>afsilvap@poligran.edu.co <br>felsip@gmail.com</td>
+                                    <td>3156784532<br>3956723</td>
+                                    <td><button type="button" class="btn btn-default btn-xs" onclick="editarDocente(1)">Editar</button></td>
+                                </tr>
+                                <tr><td class="text-center">1</td>
+                                    <td class="text-center">10278723987</td>
+                                    <td>Andres Felipe</td>
+                                    <td class="text-center">Silva Pascuas</td>
+                                    <td>afsilvap@poligran.edu.co <br>felsip@gmail.com</td>
+                                    <td>3156784532<br>3956723</td>
+                                    <td><button type="button" class="btn btn-default btn-xs" onclick="editarDocente(1)">Editar</button></td>
+                                </tr>
+                                <tr><td class="text-center">1</td>
+                                    <td class="text-center">10278723987</td>
+                                    <td>Andres Felipe</td>
+                                    <td class="text-center">Silva Pascuas</td>
+                                    <td>afsilvap@poligran.edu.co <br>felsip@gmail.com</td>
+                                    <td>3156784532<br>3956723</td>
+                                    <td><button type="button" class="btn btn-default btn-xs" onclick="editarDocente(1)">Editar</button></td>
+                                </tr>
+                                <tr><td class="text-center">1</td>
+                                    <td class="text-center">10278723987</td>
+                                    <td>Andres Felipe</td>
+                                    <td class="text-center">Silva Pascuas</td>
+                                    <td>afsilvap@poligran.edu.co <br>felsip@gmail.com</td>
+                                    <td>3156784532<br>3956723</td>
+                                    <td><button type="button" class="btn btn-default btn-xs" onclick="editarDocente(1)">Editar</button></td>
+                                </tr>
+                                <tr><td class="text-center">1</td>
+                                    <td class="text-center">10278723987</td>
+                                    <td>Andres Felipe</td>
+                                    <td class="text-center">Silva Pascuas</td>
+                                    <td>afsilvap@poligran.edu.co <br>felsip@gmail.com</td>
+                                    <td>3156784532<br>3956723</td>
+                                    <td><button type="button" class="btn btn-default btn-xs" onclick="editarDocente(1)">Editar</button></td>
+                                </tr>
+                                <tr><td class="text-center">1</td>
+                                    <td class="text-center">10278723987</td>
+                                    <td>Andres Felipe</td>
+                                    <td class="text-center">Silva Pascuas</td>
+                                    <td>afsilvap@poligran.edu.co <br>felsip@gmail.com</td>
+                                    <td>3156784532<br>3956723</td>
+                                    <td><button type="button" class="btn btn-default btn-xs" onclick="editarDocente(1)">Editar</button></td>
+                                </tr>
+                                <tr><td class="text-center">1</td>
+                                    <td class="text-center">10278723987</td>
+                                    <td>Andres Felipe</td>
+                                    <td class="text-center">Silva Pascuas</td>
+                                    <td>afsilvap@poligran.edu.co <br>felsip@gmail.com</td>
+                                    <td>3156784532<br>3956723</td>
+                                    <td><button type="button" class="btn btn-default btn-xs" onclick="editarDocente(1)">Editar</button></td>
+                                </tr>
+                                <tr><td class="text-center">1</td>
+                                    <td class="text-center">10278723987</td>
+                                    <td>Andres Felipe</td>
+                                    <td class="text-center">Silva Pascuas</td>
+                                    <td>afsilvap@poligran.edu.co <br>felsip@gmail.com</td>
+                                    <td>3156784532<br>3956723</td>
+                                    <td><button type="button" class="btn btn-default btn-xs" onclick="editarDocente(1)">Editar</button></td>
+                                </tr>
+                                <tr><td class="text-center">1</td>
+                                    <td class="text-center">10278723987</td>
+                                    <td>Andres Felipe</td>
+                                    <td class="text-center">Silva Pascuas</td>
+                                    <td>afsilvap@poligran.edu.co <br>felsip@gmail.com</td>
+                                    <td>3156784532<br>3956723</td>
+                                    <td><button type="button" class="btn btn-default btn-xs" onclick="editarDocente(1)">Editar</button></td>
+                                </tr>
+                                <tr><td class="text-center">1</td>
+                                    <td class="text-center">10278723987</td>
+                                    <td>Andres Felipe</td>
+                                    <td class="text-center">Silva Pascuas</td>
+                                    <td>afsilvap@poligran.edu.co <br>felsip@gmail.com</td>
+                                    <td>3156784532<br>3956723</td>
+                                    <td><button type="button" class="btn btn-default btn-xs" onclick="editarDocente(1)">Editar</button></td>
+                                </tr>
+                                <tr><td class="text-center">1</td>
+                                    <td class="text-center">10278723987</td>
+                                    <td>Andres Felipe</td>
+                                    <td class="text-center">Silva Pascuas</td>
+                                    <td>afsilvap@poligran.edu.co <br>felsip@gmail.com</td>
+                                    <td>3156784532<br>3956723</td>
+                                    <td><button type="button" class="btn btn-default btn-xs" onclick="editarDocente(1)">Editar</button></td>
+                                </tr>
+                                <tr><td class="text-center">1</td>
+                                    <td class="text-center">10278723987</td>
+                                    <td>Andres Felipe</td>
+                                    <td class="text-center">Silva Pascuas</td>
+                                    <td>afsilvap@poligran.edu.co <br>felsip@gmail.com</td>
+                                    <td>3156784532<br>3956723</td>
+                                    <td><button type="button" class="btn btn-default btn-xs" onclick="editarDocente(1)">Editar</button></td>
+                                </tr>
+                                <tr><td class="text-center">1</td>
+                                    <td class="text-center">10278723987</td>
+                                    <td>Andres Felipe</td>
+                                    <td class="text-center">Silva Pascuas</td>
+                                    <td>afsilvap@poligran.edu.co <br>felsip@gmail.com</td>
+                                    <td>3156784532<br>3956723</td>
+                                    <td><button type="button" class="btn btn-default btn-xs" onclick="editarDocente(1)">Editar</button></td>
+                                </tr>
+                                <tr><td class="text-center">1</td>
+                                    <td class="text-center">10278723987</td>
+                                    <td>Andres Felipe</td>
+                                    <td class="text-center">Silva Pascuas</td>
+                                    <td>afsilvap@poligran.edu.co <br>felsip@gmail.com</td>
+                                    <td>3156784532<br>3956723</td>
+                                    <td><button type="button" class="btn btn-default btn-xs" onclick="editarDocente(1)">Editar</button></td>
+                                </tr>
+                                <tr><td class="text-center">1</td>
+                                    <td class="text-center">10278723987</td>
+                                    <td>Andres Felipe</td>
+                                    <td class="text-center">Silva Pascuas</td>
+                                    <td>afsilvap@poligran.edu.co <br>felsip@gmail.com</td>
+                                    <td>3156784532<br>3956723</td>
+                                    <td><button type="button" class="btn btn-default btn-xs" onclick="editarDocente(1)">Editar</button></td>
+                                </tr>
+                                <tr><td class="text-center">1</td>
+                                    <td class="text-center">10278723987</td>
+                                    <td class="text-center">Andres Felipe</td>
+                                    <td >Silva Pascuas</td>
+                                    <td>afsilvap@poligran.edu.co<br>felsip@gmail.com</td>
+                                    <td>3156784532<br>3956723</td>
+                                    <td><button type="button" class="btn btn-default btn-xs" onclick="editarDocente(1)">Editar</button></td>
+                                </tr>
+                                <tr><td class="text-center">1</td>
+                                    <td class="text-center">10278723987</td>
+                                    <td class="text-center">Andres Felipe</td>
+                                    <td >Silva Pascuas</td>
+                                    <td>afsilvap@poligran.edu.co<br>felsip@gmail.com</td>
+                                    <td>3156784532<br>3956723</td>
+                                    <td><button type="button" class="btn btn-default btn-xs" onclick="editarDocente(1)">Editar</button></td>
+                                </tr>
+                                <tr><td class="text-center">1</td>
+                                    <td class="text-center">10278723987</td>
+                                    <td class="text-center">Andres Felipe</td>
+                                    <td >Silva Pascuas</td>
+                                    <td>afsilvap@poligran.edu.co<br>felsip@gmail.com</td>
+                                    <td>3156784532<br>3956723</td>
+                                    <td><button type="button" class="btn btn-default btn-xs" onclick="editarDocente(1)">Editar</button></td>
+                                </tr>
+                            </table>
+
+                            <div id="orderModal" class="modal hide fade" role="dialog"
+                                 aria-labelledby="orderModalLabel" aria-hidden="true">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                                    <h3>Docente</h3>
+                                </div>
+                                <div id="orderDetails" class="modal-body"></div>
+
+                                <div id="orderItems" class="modal-body"></div>
+                                <div class="modal-footer">
+                                    <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <small class="navbar-brand page-scroll ">Desarrollado por Grupo de práctica aplicada - Facultad de Ingeniería y Ciencias Básicas. IUPG.</small>
+                </div>
+            </div>
+            <!-- /.container -->
+        </nav>
+        <section id="pie" class="pie-section">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+    </body>
+</html>
