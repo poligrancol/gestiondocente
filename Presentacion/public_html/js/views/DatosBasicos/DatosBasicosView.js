@@ -5,8 +5,8 @@ define([
     'models/ProfesorModel',
     'text!templates/docente/ListarDatosBasicosTemplate.html',
     'text!templates/docente/EditarDatosBasicosTemplate.html',
-], function ($, _, Backbone, ProfesorModel, ListarDatosBasicosTemplate, EditarDatosBasicosTemplate) {
- 
+], function ($, _, Backbone,  ProfesorModel, ListarDatosBasicosTemplate, EditarDatosBasicosTemplate) {
+
     var DatosBasicosView = Backbone.View.extend({
         className: "intro-section",
         el: $("#intro"),
@@ -19,15 +19,15 @@ define([
             var that = this;
             var options = {
                 success: function(pmo){
-                    that.cargarTemplate({model:pmo       },ListarDatosBasicosTemplate);
+                    that.cargarTemplate({model: pmo}, ListarDatosBasicosTemplate);
                 },
                 error:this.errorConsulta
             };
             this.model.sync("read",this.model,options);
-            //this.cargarDatos(this.model);
+
         },
         cargarEditar: function(){
-            this.cargarTemplate({model:this.model},EditarDatosBasicosTemplate);
+            this.cargarTemplate({model: this.model}, EditarDatosBasicosTemplate);
         },
         cargarTemplate: function(data, template){
             var t = _.template(template);
@@ -56,7 +56,7 @@ define([
         almacenarDatosBasicos : function(){
             //this.model.sync("save",this.model,options);
             alert('Datos almacenados.');
-        }        
+        }
     });
     return DatosBasicosView;
 });
