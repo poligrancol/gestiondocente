@@ -33,6 +33,9 @@ define([
     var initialize = function () {
         var app_router = new AppRouter();
 
+        var dbv = new DatosBasicosView();
+        dbv.render(1);
+
         // Find a teacher and renders the results template.
         //
         //      /#buscar-docente/

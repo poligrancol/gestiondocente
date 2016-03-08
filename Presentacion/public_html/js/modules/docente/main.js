@@ -13,10 +13,12 @@ require.config({
     jquery: 'libs/jquery/jquery-2.1.3.min',
     underscore: 'libs/underscore/underscore-min',
     backbone: 'libs/backbone/backbone-min',
-    templates: '../templates'    
+    templates: '../templates'
   }
 
 });
+
+
 
 require([
   // Load our app module and pass it to our definition function

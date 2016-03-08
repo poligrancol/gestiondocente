@@ -16,23 +16,23 @@ define([
             if(id){
                 this.model.set({idProfesor:id});
             }
+            var that = this;
             var options = {
-                success:this.cargarDatos,
+                success: function(pmo){
+                    that.cargarTemplate({model:pmo       },ListarDatosBasicosTemplate);
+                },
                 error:this.errorConsulta
             };
-            //this.model.sync("read",this.model,options);
-            this.cargarDatos(this.model);
+            this.model.sync("read",this.model,options);
+            //this.cargarDatos(this.model);
+        },
+        cargarEditar: function(){
+            this.cargarTemplate({model:this.model},EditarDatosBasicosTemplate);
         },
         cargarTemplate: function(data, template){
             var t = _.template(template);
             var compiledTemplate = t(data);
             this.$el.html(compiledTemplate);
-        },
-        cargarDatos: function(pmo){
-            this.cargarTemplate({model:pmo       },ListarDatosBasicosTemplate);
-        },
-        cargarEditar: function(){
-            this.cargarTemplate({model:this.model},EditarDatosBasicosTemplate);
         },
         errorConsulta: function(e){
             console.log(e);
