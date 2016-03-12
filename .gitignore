@@ -7,3 +7,8 @@
 /Logica/web/*.css
 /Logica/web/*.gif
 /Logica/web/images
+
+# Specific configuration.
+Logica/setup/glassfish-resources.xml
+Logica/src/conf/persistence.xml
+Logica/web/WEB-INF/glassfish-resources.xml
