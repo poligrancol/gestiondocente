@@ -63,3 +63,20 @@ Para empezar a trabajar en una nueva historia de usuario debes:
 4. Crear un [Pull Request](https://help.github.com/articles/using-pull-requests/)
 5. Esperar a que revise y se mezcle.
 
+
+## API URLs / Backend / Aplicación GlassFish
+
+Para hacer llamados al API localmente es necesario usar el esquema `http://localhost:8080/Logica/webresources/` y adicionar la URL de la clase fachada que queremos llamar, E.J: si hacemos un llamado a `http://localhost:8080/Logica/webresources/archivosadjuntos/` estaremos conectando con la clase `ArchivosAdjuntosFacadeREST.java`.
+
+| URL                | Clase                                              |
+| ------------------ |:--------------------------------------------------:|
+| archivosadjuntos   | `gd/data/service/ArchivosAdjuntosFacadeREST.java`  |
+| departamento       | `gd/data/service/DepartamentoFacadeREST.java`      |
+| detalleexperiencia | `gd/data/service/DetalleExperienciaFacadeRest.java`|
+| escolaridad        | `gd/data/service/EscolaridadFacadeREST.java`       |
+| experiencia        | `gd/data/service/DetalleExperienciaFacadeREST.java`|
+| materias           | `gd/data/service/MateriasFacadeREST.java`          |
+| pais               | `gd/data/service/PaisFacadeREST.java`              |
+| profesor           | `gd/data/service/ProfesorFacadeREST.java`          |
+| tarjetaprofesional | `gd/data/service/TarjetaProfesionalFacadeREST.java`|
+| titulo             | `gd/data/service/TituloFacadeREST.java`            |

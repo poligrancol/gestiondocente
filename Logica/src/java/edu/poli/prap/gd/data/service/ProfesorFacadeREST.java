@@ -24,7 +24,7 @@ import javax.ws.rs.Produces;
  * @author julianolarte
  */
 @Stateless
-@Path("edu.poli.prap.gd.data.profesor")
+@Path("profesor")
 public class ProfesorFacadeREST extends AbstractFacade<Profesor> {
     @PersistenceContext(unitName = "LogicaPU")
     private EntityManager em;
@@ -85,5 +85,5 @@ public class ProfesorFacadeREST extends AbstractFacade<Profesor> {
     protected EntityManager getEntityManager() {
         return em;
     }
-    
+
 }
