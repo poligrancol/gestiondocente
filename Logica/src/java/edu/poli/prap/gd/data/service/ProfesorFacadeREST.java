@@ -25,6 +25,7 @@ import javax.ws.rs.Produces;
  */
 @Stateless
 @Path("edu.poli.prap.gd.data.profesor")
+@Produces({"application/xml", "application/json"})
 public class ProfesorFacadeREST extends AbstractFacade<Profesor> {
     @PersistenceContext(unitName = "LogicaPU")
     private EntityManager em;
@@ -35,14 +36,12 @@ public class ProfesorFacadeREST extends AbstractFacade<Profesor> {
 
     @POST
     @Override
-    @Consumes({"application/xml", "application/json"})
     public void create(Profesor entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
-    @Consumes({"application/xml", "application/json"})
     public void edit(@PathParam("id") Long id, Profesor entity) {
         super.edit(entity);
     }
@@ -55,21 +54,18 @@ public class ProfesorFacadeREST extends AbstractFacade<Profesor> {
 
     @GET
     @Path("{id}")
-    @Produces({"application/xml", "application/json"})
     public Profesor find(@PathParam("id") Long id) {
         return super.find(id);
     }
 
     @GET
     @Override
-    @Produces({"application/xml", "application/json"})
     public List<Profesor> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
-    @Produces({"application/xml", "application/json"})
     public List<Profesor> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
@@ -80,10 +76,18 @@ public class ProfesorFacadeREST extends AbstractFacade<Profesor> {
     public String countREST() {
         return String.valueOf(super.count());
     }
+    
+    @GET
+    @Path("buscar")
+    public List<Profesor> findByParams() {
+        return super.findByParams("John", "Doe");
+    }
 
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+    
     
 }
