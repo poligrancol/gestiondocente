@@ -2,6 +2,11 @@
 
 Repositorio para almacenar el código fuente del proyecto de práctica aplicada del 20161, Politécnico Grancolombiano. El objetivo del proyecto es la construcción de un software que permita la administración de docentes.
 
+## Recursos
+
+*  [¿Cómo obtener parametros GET de la URL?](http://www.concretepage.com/webservices/resteasy-3/jax-rs-defaultvalue-annotation-example-with-resteasy-3)
+*  [¿Cómo crear un recurso RESTFull?](https://docs.oracle.com/cd/E19776-01/820-4867/6nga7f5n6/index.html)
+
 
 ## ¿Cómo descargar este repositorio?
 
@@ -80,3 +85,4 @@ Para hacer llamados al API localmente es necesario usar el esquema `http://local
 | profesor           | `gd/data/service/ProfesorFacadeREST.java`          |
 | tarjetaprofesional | `gd/data/service/TarjetaProfesionalFacadeREST.java`|
 | titulo             | `gd/data/service/TituloFacadeREST.java`            |
+
