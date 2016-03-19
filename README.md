@@ -7,6 +7,7 @@ Repositorio para almacenar el código fuente del proyecto de práctica aplicada 
 *  [¿Cómo obtener parametros GET de la URL?](http://www.concretepage.com/webservices/resteasy-3/jax-rs-defaultvalue-annotation-example-with-resteasy-3)
 *  [¿Cómo crear un recurso RESTFull?](https://docs.oracle.com/cd/E19776-01/820-4867/6nga7f5n6/index.html)
 *  [¿Cómo crear y recibir formas?](http://www.mastertheboss.com/jboss-frameworks/resteasy/resteasy-tutorial-part-two-web-parameters)
+*  [Queries a la base de datos y persistencia](https://glassfish.java.net/javaee5/persistence/persistence-example.html)
 
 
 ## ¿Cómo descargar este repositorio?
