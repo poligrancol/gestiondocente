@@ -156,11 +156,11 @@ public class Profesor implements Serializable {
         this.tipoDocumento = tipoDocumento;
     }
 
-    public Long getNumeroDocumento() {
+    public String getNumeroDocumento() {
         return numeroDocumento;
     }
 
-    public void setNumeroDocumento(Long numeroDocumento) {
+    public void setNumeroDocumento(String numeroDocumento) {
         this.numeroDocumento = numeroDocumento;
     }
 

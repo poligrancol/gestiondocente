@@ -73,7 +73,7 @@ public class ProfesorFacadeREST extends AbstractFacade<Profesor> {
      *
      * <code>
      *
-     *      /buscar?first_name=John&last_name=Doe&document_number=576944&gender=masculino
+     *      /profesor/buscar?first_name=John&last_name=Doe&document_number=576944&gender=masculino
      *
      * </code>
      *
