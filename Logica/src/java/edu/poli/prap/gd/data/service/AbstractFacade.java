@@ -7,6 +7,7 @@ package edu.poli.prap.gd.data.service;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 /**
  *
@@ -43,6 +44,20 @@ public abstract class AbstractFacade<T> {
         return getEntityManager().createQuery(cq).getResultList();
     }
 
+    /**
+     * Finds professors by multiple params.
+     * @return List
+     */
+    public List<T> search(String first_name) {
+
+        // Create new EntityManager
+        Query q = getEntityManager().createQuery(
+            "select c from Customer c where c.name = :name"
+        );
+        q.setParameter("name", "Joe Smith");
+        return q.getResultList();
+    }
+
     public List<T> findRange(int[] range) {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
@@ -59,5 +74,5 @@ public abstract class AbstractFacade<T> {
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
-    
+
 }

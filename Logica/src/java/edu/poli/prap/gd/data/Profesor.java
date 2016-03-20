@@ -49,7 +49,16 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Profesor.findByEmailInstitucional", query = "SELECT p FROM Profesor p WHERE p.emailInstitucional = :emailInstitucional"),
     @NamedQuery(name = "Profesor.findByTelefonoFijo", query = "SELECT p FROM Profesor p WHERE p.telefonoFijo = :telefonoFijo"),
     @NamedQuery(name = "Profesor.findByCelular", query = "SELECT p FROM Profesor p WHERE p.celular = :celular"),
-    @NamedQuery(name = "Profesor.findByDireccion", query = "SELECT p FROM Profesor p WHERE p.direccion = :direccion")})
+    @NamedQuery(name = "Profesor.findByDireccion", query = "SELECT p FROM Profesor p WHERE p.direccion = :direccion"),
+    @NamedQuery(
+        name = "Profesor.findByParams",
+        query = "SELECT p FROM Profesor p WHERE " +
+                "lower(p.nombre) like :first_name and " +
+                "lower(p.apellido) like :last_name and " +
+                "p.numeroDocumento like :document_number and " +
+                "lower(p.genero) like :gender"
+    )
+})
 public class Profesor implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -61,7 +70,7 @@ public class Profesor implements Serializable {
     @Column(name = "tipo_documento")
     private String tipoDocumento;
     @Column(name = "numero_documento")
-    private Long numeroDocumento;
+    private String numeroDocumento;
     @Size(max = 50)
     @Column(name = "nombre")
     private String nombre;
@@ -369,5 +378,5 @@ public class Profesor implements Serializable {
     public String toString() {
         return "edu.poli.prap.gd.data.Profesor[ idProfesor=" + idProfesor + " ]";
     }
-    
+
 }
