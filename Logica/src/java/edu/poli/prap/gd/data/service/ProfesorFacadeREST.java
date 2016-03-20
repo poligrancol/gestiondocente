@@ -10,6 +10,8 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.ws.rs.DefaultValue;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -25,6 +27,7 @@ import javax.ws.rs.Produces;
  */
 @Stateless
 @Path("profesor")
+@Produces({"application/xml", "application/json"})
 public class ProfesorFacadeREST extends AbstractFacade<Profesor> {
     @PersistenceContext(unitName = "LogicaPU")
     private EntityManager em;
@@ -55,21 +58,46 @@ public class ProfesorFacadeREST extends AbstractFacade<Profesor> {
 
     @GET
     @Path("{id}")
-    @Produces({"application/xml", "application/json"})
     public Profesor find(@PathParam("id") Long id) {
         return super.find(id);
     }
 
     @GET
     @Override
-    @Produces({"application/xml", "application/json"})
     public List<Profesor> findAll() {
         return super.findAll();
     }
 
+    /**
+     * Find a list of teachers given certain parameters.
+     *
+     * <code>
+     *
+     *      /profesor/buscar?first_name=John&last_name=Doe&document_number=576944&gender=masculino
+     *
+     * </code>
+     *
+     * @return Procesor list
+     */
+    @GET
+    @Path("buscar")
+    public List<Profesor> search(
+        @DefaultValue("") @QueryParam("first_name") String first_name,
+        @DefaultValue("") @QueryParam("last_name") String last_name,
+        @DefaultValue("") @QueryParam("document_number") String document_number,
+        @DefaultValue("") @QueryParam("gender") String gender
+    ) {
+        // Returns a list of teacher filterd by GET parameters.
+        return em.createNamedQuery("Profesor.findByParams")
+            .setParameter("first_name", "%" + first_name + "%")
+            .setParameter("last_name", "%" + last_name + "%")
+            .setParameter("document_number", "%" + document_number + "%")
+            .setParameter("gender", "%" + gender + "%")
+            .getResultList();
+    }
+
     @GET
     @Path("{from}/{to}")
-    @Produces({"application/xml", "application/json"})
     public List<Profesor> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
