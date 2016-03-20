@@ -8,6 +8,13 @@ Repositorio para almacenar el código fuente del proyecto de práctica aplicada 
 *  [¿Cómo crear un recurso RESTFull?](https://docs.oracle.com/cd/E19776-01/820-4867/6nga7f5n6/index.html)
 *  [¿Cómo crear y recibir formas?](http://www.mastertheboss.com/jboss-frameworks/resteasy/resteasy-tutorial-part-two-web-parameters)
 *  [Queries a la base de datos y persistencia](https://glassfish.java.net/javaee5/persistence/persistence-example.html)
+* [SQL en Java](https://docs.oracle.com/cd/E19226-01/820-7627/bnbtg/index.html)
+* [Ejemplos de SQL en Java](https://docs.oracle.com/cd/E19226-01/820-7627/bnbtl/index.html)
+
+
+## Aplicaciones y código de ejemplo
+
+* [Student Enrollemnt](https://github.com/elizabetht/StudentEnrollmentWithREST)
 
 
 ## ¿Cómo descargar este repositorio?
