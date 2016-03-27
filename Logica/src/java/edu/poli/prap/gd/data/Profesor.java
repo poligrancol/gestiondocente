@@ -55,8 +55,11 @@ import javax.xml.bind.annotation.XmlTransient;
         query = "SELECT p FROM Profesor p WHERE " +
                 "lower(p.nombre) like :first_name and " +
                 "lower(p.apellido) like :last_name and " +
-                "p.numeroDocumento like :document_number and " +
-                "lower(p.genero) like :gender"
+                "p.numeroDocumento like :document_number"
+                // TODO: Add `email_institucional` to every row so that this query
+                // returns data, otherwise it'll return an empty list.
+                // "p.numeroDocumento like :document_number and " +
+                // "p.emailInstitucional like :email "
     )
 })
 public class Profesor implements Serializable {

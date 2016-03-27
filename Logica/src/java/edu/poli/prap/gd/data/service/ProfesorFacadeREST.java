@@ -85,14 +85,14 @@ public class ProfesorFacadeREST extends AbstractFacade<Profesor> {
         @DefaultValue("") @QueryParam("first_name") String first_name,
         @DefaultValue("") @QueryParam("last_name") String last_name,
         @DefaultValue("") @QueryParam("document_number") String document_number,
-        @DefaultValue("") @QueryParam("gender") String gender
+        @DefaultValue("") @QueryParam("email") String email
     ) {
         // Returns a list of teacher filterd by GET parameters.
         return em.createNamedQuery("Profesor.findByParams")
             .setParameter("first_name", "%" + first_name + "%")
             .setParameter("last_name", "%" + last_name + "%")
             .setParameter("document_number", "%" + document_number + "%")
-            .setParameter("gender", "%" + gender + "%")
+            // .setParameter("email", "%" + email + "%")
             .getResultList();
     }
 
