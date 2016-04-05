@@ -2,16 +2,16 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'text!templates/ExperienciaLab/ListarExperienceLabTemplate.html'
-], function ($, _, Backbone, ListarExperienceLabTemplate) {
+    'text!templates/ExperienciaLab/ExperienciaLaboralTemplate.html'
+], function ($, _, Backbone, ExperienciaLaboralTemplate) {
 
-    var ListarExperienciaLabView = Backbone.View.extend({
+    var ExperienciaLabView = Backbone.View.extend({
         render: function (accion,id) {
             var data = {};
-            var template = _.template(ListarExperienceLabTemplate);
+            var template = _.template(ExperienciaLaboralTemplate);
             var compiledTemplate = template(data);
-            $("#services").html(compiledTemplate);  
+            $("#experiencia").html(compiledTemplate);  
         }
     });
-    return ListarExperienciaLabView;
+    return ExperienciaLabView;
 });
