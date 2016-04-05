@@ -14,3 +14,7 @@ Logica/setup/glassfish-resources.xml
 Logica/src/conf/persistence.xml
 Logica/web/WEB-INF/glassfish-resources.xml
 
+# Ignore project properties.
+Logica/nbproject/project.properties
+Presentacion/nbproject/project.properties
+
