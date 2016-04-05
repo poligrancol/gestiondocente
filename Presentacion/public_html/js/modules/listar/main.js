@@ -13,12 +13,11 @@ require.config({
     backbone: 'libs/backbone/backbone-min',
     templates: '../templates'
   }
-
 });
 
 require([
   // Load our app module and pass it to our definition function
-  'modules/buscar/app'
+  'modules/listar/app'
 
 ], function(App) {
 

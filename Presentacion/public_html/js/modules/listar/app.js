@@ -13,7 +13,7 @@ define([
   //
   // This line requests router.js which contains
   // the routes for this module.
-  'modules/buscar/router'
+  'modules/listar/router'
 ], function($, _, Backbone, Router) {
   var initialize = function() {
 
