@@ -5,19 +5,20 @@ define([
     'backbone',
     'views/DatosBasicos/DatosBasicosView',
     'views/Escolaridad/EscolaridadView',
+    'views/TarjetaProf/TarjetaProfesionalListView'
     /*'views/Buscar/BuscarDocente',
     'views/ExperienciaLab/ExperienciaLabView',
     'views/ExperienciaLab/EditarExperienciaLabView',
     'views/ExperienciaLab/CrearExperienciaLabView'
             /*'views/docente/lessonEndView'*/
             // 'views/editor/editorView'
-], function ($, _, Backbone, DatosBasicosView, EscolaridadView) {
+], function ($, _, Backbone, DatosBasicosView, EscolaridadView, TarjetaProfesionalListView) {
 
     var AppRouter = Backbone.Router.extend({
         routes: {
             // Define some URL routes
-            //':id': 'show',
-            //'': 'default'
+            ':seccion/:accion/:id'   : 'show',
+      '' : 'default'
         }
     });
 
@@ -31,6 +32,9 @@ define([
         var escolaridadView = new EscolaridadView();
         escolaridadView.render();
         
+        var tarjetaProfesionalListView = new TarjetaProfesionalListView();
+        tarjetaProfesionalListView.render(id);
+        
 //
         //
 //var buscarDocenteView = new BuscarDocenteView();
@@ -43,6 +47,16 @@ define([
         //app_router.on('route:show', function (id) {
         //    datosBasicosView.render(id);
         //});
+        app_router.on('route:show', function(seccion,accion,id){
+        if(seccion == "datosbasicos"){
+            datosBasicosView.render(accion,id);
+        }else if(seccion == "tarjetaprof"){
+            tarjetaProfesionalListView.render(accion,id);
+        }
+        //view.render(idCategory,idLesson);
+    });
+    
+    Backbone.history.start();
     }
 
     return {
