@@ -48,9 +48,9 @@ define([
         //    datosBasicosView.render(id);
         //});
         app_router.on('route:show', function(seccion,accion,id){
-        if(seccion === "datosbasicos"){
+        if(seccion == "datosbasicos"){
             datosBasicosView.render(accion,id);
-        }else if(seccion === "tarjetaprof"){
+        }else if(seccion == "tarjetaprof"){
             tarjetaProfesionalListView.render(accion,id);
         }
         //view.render(idCategory,idLesson);
