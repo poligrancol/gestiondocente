@@ -15,7 +15,7 @@ define([
         render: function (accion,id) {
             
             id = id || 0
-            if(accion === "ver"){
+            if(accion === "view"){
                 var data = {};
                 var template = _.template(tarjetaProfesionalListTemplate);
                 var compiledTemplate = template(data);
