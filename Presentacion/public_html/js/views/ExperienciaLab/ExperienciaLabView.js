@@ -5,9 +5,10 @@ define([
     'text!templates/ExperienciaLab/ExperienciaLaboralTemplate.html',
     'text!templates/ExperienciaLab/MostrarExperienciaRealTemplate.html',
     'text!templates/ExperienciaLab/MostrarExperienciaDocenteTemplate.html',
-    'text!templates/ExperienciaLab/AgregarExperienciaDocenteTemplate.html'
+    'text!templates/ExperienciaLab/AgregarExperienciaDocenteTemplate.html',
+    'text!templates/ExperienciaLab/AgregarExperienciaRealTemplate.html'
 
-], function ($, _, Backbone, ExperienciaLaboralTemplate, MostrarExperienciaRealTemplate, MostrarExperienciaDocenteTemplate, AgregarExperienciaDocenteTemplate) {
+], function ($, _, Backbone, ExperienciaLaboralTemplate, MostrarExperienciaRealTemplate, MostrarExperienciaDocenteTemplate, AgregarExperienciaDocenteTemplate, AgregarExperienciaRealTemplate) {
 
     var ExperienciaLabView = Backbone.View.extend({
         el:"#experiencia",
@@ -20,7 +21,8 @@ define([
         events: {
             "click #mostrarExperienciaReal":"mostrarExperienciaReal",
             "click #mostrarExperienciaDocente":"mostrarExperienciaDocente",
-            "click #agregarexperienciadocente":"agregarExperienciaDocente"
+            "click #agregarexperienciadocente":"agregarExperienciaDocente",
+            "click #agregarexperienciareal":"agregarExperienciaReal"
         },
         mostrarExperienciaReal: function(){
             var data = {};
@@ -37,6 +39,12 @@ define([
         agregarExperienciaDocente: function(){
             var data = {};
             var template = _.template(AgregarExperienciaDocenteTemplate);
+            var compiledTemplate = template(data);
+            $("#experienciacontenido").html(compiledTemplate);
+        },
+        agregarExperienciaReal: function(){
+            var data = {};
+            var template = _.template(AgregarExperienciaRealTemplate);
             var compiledTemplate = template(data);
             $("#experienciacontenido").html(compiledTemplate);
         }
