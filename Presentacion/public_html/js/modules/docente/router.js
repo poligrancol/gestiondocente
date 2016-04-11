@@ -31,7 +31,8 @@ define([
     //
     var initialize = function () {
         var app_router = new AppRouter();
-
+        var escv = new EscolaridadView();
+        escv.render();
         // Have bookmarkable URLs.
         Backbone.history.start();
     };
