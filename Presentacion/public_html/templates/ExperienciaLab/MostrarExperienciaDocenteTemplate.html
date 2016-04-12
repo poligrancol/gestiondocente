@@ -18,7 +18,7 @@
 				</tr>
 			</table>
 			<ul class="nav nav-tabs" role="tablist">
-				<li role="presentation" class="active"><a href="#pensamientoalgoritmico" aria-controls="home" role="tab" data-toggle="tab">Pensamiento Algoritmico</a></li>
+                            <li role="presentation" class="active"><a href="#pensamientoalgoritmico" aria-controls="home" role="tab" data-toggle="tab">Pensamiento Algoritmico <span class="glyphicon glyphicon-pencil"></span> </a></li>
 				<li role="presentation"><a href="#basesdedatos" aria-controls="profile" role="tab" data-toggle="tab">Bases de Datos</a></li>
 				<li role="presentation"><a href="#ingenieriadesoftware" aria-controls="messages" role="tab" data-toggle="tab">Ingenieria de Software</a></li>
 				<li role="presentation"><a href="#agregarmateria" aria-controls="messages" role="tab" data-toggle="tab">Agregar Materia</a></li>
@@ -93,6 +93,49 @@
 						</table>
 					</div>
 				</div>
+                                <div role="tabpanel" class="tab-pane" id="agregarmateria">
+				<div class="panel panel-success">
+					<!-- Default panel contents -->
+				    <form class="form-horizontal">
+					</br><div class="form-group">
+					<label for="inputMateria" class="col-sm-2 control-label">Materia</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="inputMateria" placeholder="Materia">
+					</div>
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="inputFacultad" class="col-sm-2 control-label">Facultad</label>
+                                                <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="inputFacultad" placeholder="Facultad">
+                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="inputArea" class="col-sm-2 control-label">Area</label>
+                                                <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="inputArea" placeholder="Area">
+                                                </div>
+                                        </div>	
+                                        <div class="form-group">
+                                                <label for="inputTiempoMateria" class="col-sm-2 control-label">Tipo de Materia</label>
+                                                <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="inputTiempoMateria" placeholder="Tipo Materia">
+                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="inputTiempoDictado" class="col-sm-2 control-label">Tiempo Dictado</label>
+                                                <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="inputTiempoDictado" placeholder="Tiempo Dicatdo">
+                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                                <div class="col-sm-offset-2 col-sm-10">
+                                                        <button type="submit" class="btn ">Agregar Materia</button>
+                                                        <button type="button" class="btn btn-danger delete">Cancelar</button>
+                                                </div>
+                                        </div>
+                                    </form>
+                                </div>                   
+                        </div> 
 			</div>
 		</div>
 	</div>
@@ -234,7 +277,7 @@
 	</div>
 </div>
 </div>							
-<div role="tabpanel" class="tab-pane" id="universidadsergioarboleda">
+        <div role="tabpanel" class="tab-pane" id="universidadsergioarboleda">
 	<div class="panel panel-success">
 		<!-- Default panel contents -->
 		<div class="panel-heading">Institución: <strong>Universidad Sergio Arboleda </strong><button class="btn">Editar</button></div>
@@ -326,50 +369,50 @@
 			<div role="tabpanel" class="tab-pane" id="agregarmateria">
 				<div class="panel panel-success">
 					<!-- Default panel contents -->
-					<form class="form-horizontal">
+				    <form class="form-horizontal">
 					</br><div class="form-group">
 					<label for="inputMateria" class="col-sm-2 control-label">Materia</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="inputMateria" placeholder="Materia">
 					</div>
-				</div>
-				<div class="form-group">
-					<label for="inputFacultad" class="col-sm-2 control-label">Facultad</label>
-					<div class="col-sm-9">
-						<input type="text" class="form-control" id="inputFacultad" placeholder="Facultad">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="inputArea" class="col-sm-2 control-label">Area</label>
-					<div class="col-sm-9">
-						<input type="text" class="form-control" id="inputArea" placeholder="Area">
-					</div>
-				</div>	
-				<div class="form-group">
-					<label for="inputTiempoMateria" class="col-sm-2 control-label">Tipo de Materia</label>
-					<div class="col-sm-9">
-						<input type="text" class="form-control" id="inputTiempoMateria" placeholder="Tipo Materia">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="inputTiempoDictado" class="col-sm-2 control-label">Tiempo Dictado</label>
-					<div class="col-sm-9">
-						<input type="text" class="form-control" id="inputTiempoDictado" placeholder="Tiempo Dicatdo">
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn ">Agregar Materia</button>
-						<button type="button" class="btn btn-danger delete">Cancelar</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
-<div>
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="inputFacultad" class="col-sm-2 control-label">Facultad</label>
+                                                <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="inputFacultad" placeholder="Facultad">
+                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="inputArea" class="col-sm-2 control-label">Area</label>
+                                                <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="inputArea" placeholder="Area">
+                                                </div>
+                                        </div>	
+                                        <div class="form-group">
+                                                <label for="inputTiempoMateria" class="col-sm-2 control-label">Tipo de Materia</label>
+                                                <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="inputTiempoMateria" placeholder="Tipo Materia">
+                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="inputTiempoDictado" class="col-sm-2 control-label">Tiempo Dictado</label>
+                                                <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="inputTiempoDictado" placeholder="Tiempo Dicatdo">
+                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                                <div class="col-sm-offset-2 col-sm-10">
+                                                        <button type="submit" class="btn ">Agregar Materia</button>
+                                                        <button type="button" class="btn btn-danger delete">Cancelar</button>
+                                                </div>
+                                        </div>
+                                    </form>
+                                </div>                   
+                        </div>
+                </div>       
+            </div>
+        </div>
+    <div>
 	<button class="btn btn-primary">Editar </button>
+    </div>
 </div>
-</div>
-</div>
-</div>	
