@@ -22,7 +22,8 @@ define([
             "click #mostrarExperienciaReal":"mostrarExperienciaReal",
             "click #mostrarExperienciaDocente":"mostrarExperienciaDocente",
             "click #agregarexperienciadocente":"agregarExperienciaDocente",
-            "click #agregarexperienciareal":"agregarExperienciaReal"
+            "click #agregarexperienciareal":"agregarExperienciaReal",
+            "click #editarexperienciareal":"editarExperienciaReal"
         },
         mostrarExperienciaReal: function(){
             var data = {};
@@ -47,6 +48,12 @@ define([
             var template = _.template(AgregarExperienciaRealTemplate);
             var compiledTemplate = template(data);
             $("#experienciacontenido").html(compiledTemplate);
+        },
+        editarExperienciaReal: function(){
+            var data = {};
+            var template = _.template(AgregarExperienciaRealTemplate);
+            var compiledTemplate = template(data);
+            $("#experienciarealcontenido").html(compiledTemplate);
         }
 
     });
