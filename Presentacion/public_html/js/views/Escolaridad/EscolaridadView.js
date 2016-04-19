@@ -29,10 +29,7 @@ function ($, _, Backbone, EscolaridadModel, EscolaridadCollection, ListarEscolar
             //this.model.sync("read",this.model,options);
             this.cargarDatos(this.model);
         },
-        
-        
-        
-        
+          
         
         
         cargarTemplate: function (data, template) {
@@ -60,11 +57,16 @@ function ($, _, Backbone, EscolaridadModel, EscolaridadCollection, ListarEscolar
         },
         events: {
             "click #dbeditarEcolaridad": "editarEscolaridad",
-            "click #dbnuevaEscolaridad": "nuevaEscolaridad"
+            "click #dbnuevaEscolaridad": "adjuntarDiploma",
+            "click #adjuntarDiploma": "nuevaEscolaridad"
         },
         editarEscolaridad : function(){
             console.log('cargar editar datos');
             this.cargarEditar();
+        },
+        adjuntarDiploma : function(){
+            console.log('adjuntar diploma');
+            this.cargarAdjuntarDip();
         },
         nuevaEscolaridad : function(){
             console.log('cargar nueva escolaridad');
