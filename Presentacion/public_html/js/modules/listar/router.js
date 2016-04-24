@@ -15,7 +15,7 @@ define([
     // Main application router.
     var AppRouter = Backbone.Router.extend({
         routes: {
-            'buscar-docente': 'findTeacher',
+            '': 'renderIndex',
         }
     });
 
@@ -26,11 +26,11 @@ define([
     var initialize = function () {
         var app_router = new AppRouter();
 
-        // Find a teacher and renders the results template.
+        // Renders the table to search for teachers.
         //
-        //      /#buscar-docente/
+        //      "/"
         //
-        app_router.on('route:findTeacher', function (name) {
+        app_router.on('route:renderIndex', function (name) {
 
             // Renders the view.
             var findTeacherView = new BuscarDocenteView();

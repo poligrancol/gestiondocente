@@ -1,118 +1,92 @@
 <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="page-header">
-                        <h1>
-                            Buscar Docente
-                       </h1>
+    <div class="row">
+
+        <div class="col-md-2">
+            <form method="GET" action="#" class="js-search-teacher-form">
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input name="name" type="text" value="John" class="form-control" placeholder="John">
+                </div>
+
+                <div class="form-group">
+                    <label>Apellido</label>
+                    <input name="last-name" type="text" value="Doe" class="form-control" placeholder="Velez">
+                </div>
+                <div class="form-group">
+                    <label>Número de documento</label>
+                    <input name="document-number" type="text" value="1234567" class="form-control" placeholder="67959000">
+                </div>
+                <button type="submit" class="btn btn-default">Buscar</button>
+            </form>
+        </div>
+        <div class="col-md-10">
+            <div class="panel panel-primary">
+                <!-- Default panel contents -->
+                <div class="panel-heading text-center">
+                    <h3 class="text-center">Listado de Docentes</h3>
+                </div>
+                <!-- Table -->
+                <table id="listar-docente-table" class="display table" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                <strong>No.</strong>
+                                <span class="glyphicon glyphicon-chevron-down btn-sm text-center" aria-hidden="true"></span>
+                            </th>
+                            <th>
+                                <strong>Id Identidad</strong> <span class="glyphicon glyphicon-sort text-center" aria-hidden="true"></span>
+                            </th>
+                            <th>
+                                <strong>Nombres </strong><span class="glyphicon glyphicon-sort text-center" aria-hidden="true"></span>
+                            </th>
+                            <th>
+                                <strong>Apellidos </strong><span class="glyphicon glyphicon-sort text-center" aria-hidden="true"></span>
+                            </th>
+                            <th>
+                                <strong>Correos </strong><span class="glyphicon glyphicon-sort text-center" aria-hidden="true"> </span>
+                            </th>
+                            <th>
+                                <strong>Teléfonos </strong><span class="glyphicon glyphicon-sort text-center" aria-hidden="true"></span>
+                            </th>
+                            <th>
+                                <strong>Editar</strong>
+                                <span class="glyphicon glyphicon-edit btn-sm text-center" aria-hidden="true"></span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="searchable">
+                        <% _.each(teacher_list, function(teacher) { %>
+                            <tr>
+                                <td><%= teacher.id %></td>
+                                <td><%= teacher.document_number %></td>
+                                <td><%= teacher.first_name %></td>
+                                <td><%= teacher.last_name %></td>
+                                <td><%= teacher.email %></td>
+                                <td><%= teacher.mobile_phone %></td>
+                                <td>
+                                    <button type="button" class="btn btn-default btn-xs">Editar</button>
+                                </td>
+                            </tr>
+                        <% }); %>
+
+
+                    </tbody>
+                </table>
+
+                <!-- Table -->
+                <div id="orderModal" class="modal hide fade" role="dialog" aria-labelledby="orderModalLabel" aria-hidden="true">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                        <h3>Docente</h3>
+                    </div>
+                    <div id="orderDetails" class="modal-body"></div>
+
+                    <div id="orderItems" class="modal-body"></div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
                     </div>
                 </div>
             </div>
-
-<div class="col-sm-12">  
-            <div class="panel panel-success">
-                <div class="panel-heading">Buscando Docente</div>
-                    <table class="table">
-                        <tr>
-                            <td>
-
-                            <form class="form-horizontal" >  
-            
-        <div class="form-group">
-            <label for="sel1" class="col-sm-2 control-label">Identificación:</label>
-            <div class="col-sm-4">
-                <select class="form-control">
-                    <option></option>
-                    <option>Cédula de ciudadania</option>
-                    <option>Cédula de extranjeria</option>
-                    <option>Tarjeta Profesional</option>
-                </select>
-            </div>
-            <div class="col-sm-4">
-                <input type="text" class="col-sm-2 form-control" id="ID" placeholder="">
-            </div>
-
-        </div>
-    
-        
-        <div class="form-group">
-            <label for="nombre" class="col-sm-2 control-label">Nombre:</label>
-            <div class="col-sm-3">
-                <input type="text" class="col-sm-2 form-control" id="nombre" placeholder="">
-            </div>  
-        </div>
-        <div class="form-group">
-            <label for="apellido" class="col-sm-2 control-label">Apellido:</label>
-            <div class="col-sm-3">
-                <input type="text" class="col-sm-2 form-control" id="apellido" placeholder="">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div><label for="Genero" class="col-sm-2 control-label">Género:</label> </div>
-            <div class="ratio col-sm-4">
-                <label class =  "checkbox-inline">
-                    <input type="checkbox" ID="femenino" value ="femenino"><b>Femenino</b>
-                </label>
-                <label class="checkbox-inline"><input type="checkbox" ID="masculino" value ="masculino"><b>Masculino</b></label>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="Escolaridad" class="col-sm-2 control-label">Escolaridad</label>
-            <div class="col-sm-3">
-                <select class="form-control">
-                    <option></option>
-                    <option>Pregrado</option>
-                    <option>Postgrado</option>
-                    <option>Maestria</option>
-                    <option>Doctorado</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-
-                          
-                            <div id="orderModal" class="modal hide fade" role="dialog" 
-                                 aria-labelledby="orderModalLabel" aria-hidden="true">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                                    <h3>Docente</h3>
-                                </div>
-                                <div id="orderDetails" class="modal-body">
-</table>
-                                </div>
-                  <div>
-            <button class="btn btn-primary">Buscar</button>           <button class="btn btn-primary">Listar Docente</button>
-            </div>            
-    </form>                
-                    </div>
- 
-<section id="pie" class="pie-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                
         </div>
     </div>
-    </div>
-</section>
-<div id="orderModal" class="modal hide fade" role="dialog" 
-     aria-labelledby="orderModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-        <h3>Docente</h3>
-    </div>
-    <div id="orderDetails" class="modal-body"></div>
-
-    <div id="orderItems" class="modal-body"></div>
-    <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-    </div>
 </div>
-</div>
-
-</div>
-</div>
-</div>
-</section>
