@@ -24,7 +24,7 @@ import javax.ws.rs.Produces;
  * @author julianolarte
  */
 @Stateless
-@Path("escolaridad")
+@Path("edu.poli.prap.gd.data.escolaridad")
 public class EscolaridadFacadeREST extends AbstractFacade<Escolaridad> {
     @PersistenceContext(unitName = "LogicaPU")
     private EntityManager em;

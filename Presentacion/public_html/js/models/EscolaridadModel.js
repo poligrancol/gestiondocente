@@ -6,7 +6,7 @@ define([
 ], function ($, _, Backbone, URLServer) {
 
     var EscolaridadModel = Backbone.Model.extend({
-        urlRoot: URLServer,
+        urlRoot: URLServer + 'edu.poli.prap.gd.data.escolaridad',
         idAttribute: 'codigoEscolaridad',
         defaults: {
             institucion: "",
@@ -23,6 +23,7 @@ define([
         },
         sync: function (method, model, options) {
             options || (options = {});
+            var that = that;
             var errorHandler = {
                 error: function (jqXHR, textStatus, errorThrown) {
                     // TODO: put your error handling code here
@@ -32,11 +33,12 @@ define([
                     // Otherwise the JS client has to be copied into the
                     // some (f.e. the same) Web project on the same domain
                     console.log('Unable to fulfil the request');
-                }}
-            
-            if (method == 'create') {
-                options.url = URLServer;
+                }
             }
+            
+            //if (method == 'create') {
+            options.url = that.urlRoot;
+            //}
             var result = Backbone.sync(method, model, _.extend(options, errorHandler));
             return result;
         }

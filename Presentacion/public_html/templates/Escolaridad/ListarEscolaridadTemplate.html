@@ -2,10 +2,21 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="page-header">
+                <br>
+                <br>
+                <!--SIGUIENTE LINEA: CREO UN MARCADOR PARA MOVERME MAS RAPIDO DENTRO DE LA MISMA PAGINA-->
+                <A name="listarEscolaridad"><H1></H1></A>
+
                 <h1>
-                    Listar Escolaridad 
+                    Listar Escolaridad<br/> 
                 </h1>
+
+                
             </div>
+        </div>
+    </div>
+            
+    <div>
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#tecnicos" aria-controls="tecnicos" role="tab" data-toggle="tab">Técnicos</a></li>
                 <li role="presentation"><a href="#tecnologo" aria-controls="tecnologo" role="tab" data-toggle="tab">Tecnólogos</a></li>
@@ -14,60 +25,73 @@
                 <li role="presentation"><a href="#maestria" aria-controls="maestria" role="tab" data-toggle="tab">Maestrías</a></li>
                 <li role="presentation"><a href="#doctorado" aria-controls="doctorado" role="tab" data-toggle="tab">Doctorados</a></li>
             </ul>
+        
+    </div>
+    
             <!-- Tab panes -->
             <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active fade" id="tecnicos">
+                <div role="tabpanel" class="tab-pane active" id="tecnicos">
+                    <!--div class="col-sm-9"--><!--ESTA LINEA ES INDISPENSABLE ACÀ Y EN TECNÒLOGOS?????-->
                     <div class="panel panel-success">
                         <!-- Default panel contents -->
-                        <div class="panel-heading">Institución:<strong>Politécnico Grancolombiano Institución Universitaria </strong></div>
+                        
+                        <div class="panel-heading">Institución: Instituto Técnico Central</div>
                         <!-- Table -->
                         <table class="table">
                             <tr>
                                 <td><strong>Título         : </strong></td>
-                                <td>Técnico de Implementación de Software</td>
+                                <td>Técnico profesional en computación</td>
                                 <td><strong>Tipo de estudio: </strong></td>
                                 <td>TÉCNICO</td>
                             </tr>
                             <tr>
+                                <td><strong>Tipo de documento: </strong><code><%=model.tipoDocumento%></code></td>
+                                <td><strong>ID: </strong><code>1234567890</code></td>
+                            </tr>
+                            <tr>
                                 <td><strong>Facultad       : </strong></td>
-                                <td>Facultad de Ingeniería y Ciencias Básicas</td>
+                                <td>Facultad de Ingeniería</td>
                                 <td><strong>País           : </strong></td>
                                 <td>COLOMBIA</td>
                             </tr>
                             <tr>
                                 <td><strong>AÑOS           : </strong></td>
-                                <td><code>2</code></td>
+                                <td><code>3</code></td>
                                 <td><strong>Fecha de Inicio: </strong></td>
-                                <td>2000/02/01</td>
+                                <td>2001/03/02</td>
                             </tr>
                             <tr>
                                 <td><strong>Titulado       : </strong></td>
-                                <td>SI</td>
+                                <td>Si</td>
                                 <td><strong>Convalidado: </strong></td>
                                 <td>N/A</td>
                             </tr>    
                         </table>
-
                     </div>
                     <div>
-                        <button class="btn btn-primary">Editar Escolaridad</button>
-                    </div>
+                        <button class="btn btn-primary" id="dbeditarEscolaridad">Editar Escolaridad</button>
+                        <!--//Verificar el id asociado en la BdD para la escolaridad-->
+                    </div>   
                 </div>
+                    
+                    
                 <div role="tabpanel" class="tab-pane fade" id="tecnologo">
+                <!--    <div class="col-sm-9">  -->
                     <div class="panel panel-success">
                         <!-- Default panel contents -->
-                        <div class="panel-heading">Institución:<strong>Politécnico Grancolombiano Institución Universitaria </strong></div>
+                        <a name="tecnologo" id="tecnologo"></a>
+                        <div class="panel-heading">Institución:<strong>Instituto Técnico Central</strong></div>
                         <!-- Table -->
                         <table class="table">
                             <tr>
                                 <td><strong>Título         : </strong></td>
-                                <td>Técnologo en Adminsitración de Sistemas</td>
+                                <td>Técnologo en desarrollo de software</td>
                                 <td><strong>Tipo de estudio: </strong></td>
                                 <td>TECNOLOGO</td>
                             </tr>
                             <tr>
                                 <td><strong>Facultad       : </strong></td>
-                                <td>Facultad de Ingeniería y Ciencias Básicas</td>
+                                <td>Facultad de Ingeniería</td>
                                 <td><strong>País           : </strong></td>
                                 <td>COLOMBIA</td>
                             </tr>
@@ -75,25 +99,29 @@
                                 <td><strong>AÑOS           : </strong></td>
                                 <td><code>2</code></td>
                                 <td><strong>Fecha de Inicio: </strong></td>
-                                <td>2000/02/01</td>
+                                <td>2005/01/30</td>
                             </tr>
                             <tr>
                                 <td><strong>Titulado       : </strong></td>
-                                <td>SI</td>
+                                <td>Si</td>
                                 <td><strong>Convalidado: </strong></td>
                                 <td>N/A</td>
                             </tr>                    
                         </table>
-
                     </div>
                     <div>
                         <button class="btn btn-primary">Editar Escolaridad</button>
-                    </div>
+                    </div>   
+                        <br>
+                        <br>
+                <!--</div>-->
                 </div>
-                <div role="tabpanel" class="tab-pane fade" id="profesional">
+
+                    
+                <div role="tabpanel" class="tab-pane" id="profesional">
                     <div class="panel panel-success">
                         <!-- Default panel contents -->
-                        <div class="panel-heading">Institución:<strong>Politécnico Grancolombiano Institución Universitaria </strong></div>
+                        <div class="panel-heading">Institución:<strong>Politécnico Grancolombiano</strong></div>
                         <!-- Table -->
                         <table class="table">
                             <tr>
@@ -104,7 +132,7 @@
                             </tr>
                             <tr>
                                 <td><strong>Facultad       : </strong></td>
-                                <td>Facultad de Ingeniería y Ciencias Básicas</td>
+                                <td> Facultad de Ingeniería y Ciencias Básicas</td>
                                 <td><strong>País           : </strong></td>
                                 <td>COLOMBIA</td>
                             </tr>
@@ -112,11 +140,11 @@
                                 <td><strong>AÑOS           : </strong></td>
                                 <td><code>2</code></td>
                                 <td><strong>Fecha de Inicio: </strong></td>
-                                <td>2000/02/01</td>
+                                <td>2007/01/30</td>
                             </tr>
                             <tr>
                                 <td><strong>Titulado       : </strong></td>
-                                <td>SI</td>
+                                <td>Si</td>
                                 <td><strong>Convalidado: </strong></td>
                                 <td>N/A</td>
                             </tr>    
@@ -127,21 +155,23 @@
                         <button class="btn btn-primary">Editar Escolaridad</button>
                     </div>
                 </div>
+                        
+                        
                 <div role="tabpanel" class="tab-pane fade" id="especial">
                     <div class="panel panel-success">
                         <!-- Default panel contents -->
-                        <div class="panel-heading">Institución:<strong>Politécnico Grancolombiano Institución Universitaria </strong></div>
+                        <div class="panel-heading">Institución:<strong>Universidad de los andes</strong></div>
                         <!-- Table -->
                         <table class="table">
                             <tr>
                                 <td><strong>Título         : </strong></td>
-                                <td>Especialización en redes de Telecomunicacion</td>
+                                <td>Especialización en automatizacion de procesos industriales</td>
                                 <td><strong>Tipo de estudio: </strong></td>
                                 <td>ESPECIALIZACION</td>
                             </tr>
                             <tr>
                                 <td><strong>Facultad       : </strong></td>
-                                <td>Facultad de Ingeniería y Ciencias Básicas</td>
+                                <td>Facultad de Ingeniería</td>
                                 <td><strong>País           : </strong></td>
                                 <td>COLOMBIA</td>
                             </tr>
@@ -149,7 +179,7 @@
                                 <td><strong>AÑOS           : </strong></td>
                                 <td><code>2</code></td>
                                 <td><strong>Fecha de Inicio: </strong></td>
-                                <td>2000/02/01</td>
+                                <td>2010/02/03</td>
                             </tr>
                             <tr>
                                 <td><strong>Titulado       : </strong></td>
@@ -164,21 +194,23 @@
                         <button class="btn btn-primary">Editar Escolaridad</button>
                     </div>
                 </div>
+                        
+                        
                 <div role="tabpanel" class="tab-pane fade" id="maestria">
                     <div class="panel panel-success">
                         <!-- Default panel contents -->
-                        <div class="panel-heading">Institución:<strong>Politécnico Grancolombiano Institución Universitaria </strong></div>
+                        <div class="panel-heading">Institución:<strong>Universidad de los andes</strong></div>
                         <!-- Table -->
                         <table class="table">
                             <tr>
                                 <td><strong>Título         : </strong></td>
-                                <td>Master en diseño de Software</td>
+                                <td>Magister en Ingenieria de Sistemas y Computación</td>
                                 <td><strong>Tipo de estudio: </strong></td>
                                 <td>MAESTRIA</td>
                             </tr>
                             <tr>
                                 <td><strong>Facultad       : </strong></td>
-                                <td>Facultad de Ingeniería y Ciencias Básicas</td>
+                                <td>Facultad de Ingeniería</td>
                                 <td><strong>País           : </strong></td>
                                 <td>COLOMBIA</td>
                             </tr>
@@ -186,11 +218,11 @@
                                 <td><strong>AÑOS           : </strong></td>
                                 <td><code>2</code></td>
                                 <td><strong>Fecha de Inicio: </strong></td>
-                                <td>2000/02/01</td>
+                                <td>2013/01/31</td>
                             </tr>
                             <tr>
                                 <td><strong>Titulado       : </strong></td>
-                                <td>SI</td>
+                                <td>Si</td>
                                 <td><strong>Convalidado: </strong></td>
                                 <td>N/A</td>
                             </tr>    
@@ -201,21 +233,23 @@
                         <button class="btn btn-primary">Editar Escolaridad</button>
                     </div>
                 </div>
+                        
+                        
                 <div role="tabpanel" class="tab-pane fade" id="doctorado">
                     <div class="panel panel-success">
                         <!-- Default panel contents -->
-                        <div class="panel-heading">Institución:<strong>Politécnico Grancolombiano Institución Universitaria </strong></div>
+                        <div class="panel-heading">Institución:<strong>Standford University School of Engineering</strong></div>
                         <!-- Table -->
                         <table class="table">
                             <tr>
                                 <td><strong>Título         : </strong></td>
-                                <td>Doctorado en Adminsitración de Sistemas</td>
+                                <td>Phd Management Science and Engineering</td>
                                 <td><strong>Tipo de estudio: </strong></td>
                                 <td>DOCTORADO</td>
                             </tr>
                             <tr>
                                 <td><strong>Facultad       : </strong></td>
-                                <td>Facultad de Ingeniería y Ciencias Básicas</td>
+                                <td>Engineering Faculty</td>
                                 <td><strong>País           : </strong></td>
                                 <td>COLOMBIA</td>
                             </tr>
@@ -236,9 +270,14 @@
                     </div>
                     <div>
                         <button class="btn btn-primary">Editar Escolaridad</button>
+                        //El botòn debe conectarse a db para editar cada categoria de acuerdo a sus datos (mar7)
+                        <button class="btn btn-primary" id="dbeditardatos">Editar datos básicos</button>
+
                     </div>
                 </div>
+                        
+                  
             </div> 
-        </div>
+            
     </div>
-</div>
+
