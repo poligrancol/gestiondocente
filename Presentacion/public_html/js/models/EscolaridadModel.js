@@ -6,7 +6,7 @@ define([
 ], function ($, _, Backbone, URLServer) {
 
     var EscolaridadModel = Backbone.Model.extend({
-        urlRoot: URLServer,
+        urlRoot: URLServer,// + "edu.poli.prap.gd.data.escolaridad",
         idAttribute: 'codigoEscolaridad',
         defaults: {
             institucion: "",

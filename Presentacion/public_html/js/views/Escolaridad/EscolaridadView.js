@@ -22,6 +22,8 @@ define([
                 error: this.errorConsulta
             };
             //this.model.sync("read",this.model,options);
+            this.model.set({codigoEscolaridad:1});
+            this.model.fetch();
             this.cargarDatos(this.model);
         },
         cargarTemplate: function (data, template) {

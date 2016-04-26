@@ -30,6 +30,7 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(edu.poli.prap.gd.data.service.ArchivosAdjuntosFacadeREST.class);
+        resources.add(edu.poli.prap.gd.data.service.CrossOriginResourceSharingFilter.class);
         resources.add(edu.poli.prap.gd.data.service.DepartamentoFacadeREST.class);
         resources.add(edu.poli.prap.gd.data.service.DetalleExperienciaFacadeREST.class);
         resources.add(edu.poli.prap.gd.data.service.EscolaridadFacadeREST.class);

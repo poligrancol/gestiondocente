@@ -9,8 +9,8 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'views/Buscar/BuscarDocente',
-], function ($, _, Backbone, BuscarDocenteView) {
+    'views/ListarDocente/ListarDocenteView',
+], function ($, _, Backbone, ListarDocenteView) {
 
     // Main application router.
     var AppRouter = Backbone.Router.extend({
