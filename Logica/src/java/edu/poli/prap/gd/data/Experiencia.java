@@ -6,6 +6,7 @@
 package edu.poli.prap.gd.data;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,114 +15,91 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author julianolarte
+ * @author CAMILO
  */
 @Entity
-@Table(name = "experiencia")
+@Table(name = "EXPERIENCIA")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Experiencia.findAll", query = "SELECT e FROM Experiencia e"),
-    @NamedQuery(name = "Experiencia.findByCodigoExperiencia", query = "SELECT e FROM Experiencia e WHERE e.codigoExperiencia = :codigoExperiencia"),
-    @NamedQuery(name = "Experiencia.findByExperenciaReal", query = "SELECT e FROM Experiencia e WHERE e.experenciaReal = :experenciaReal"),
-    @NamedQuery(name = "Experiencia.findByNivelDeCargoAlto", query = "SELECT e FROM Experiencia e WHERE e.nivelDeCargoAlto = :nivelDeCargoAlto"),
-    @NamedQuery(name = "Experiencia.findByExperenciaDiferentePoli", query = "SELECT e FROM Experiencia e WHERE e.experenciaDiferentePoli = :experenciaDiferentePoli"),
-    @NamedQuery(name = "Experiencia.findByExperenciaPoli", query = "SELECT e FROM Experiencia e WHERE e.experenciaPoli = :experenciaPoli"),
-    @NamedQuery(name = "Experiencia.findByNivelDeCargoAltoAcademico", query = "SELECT e FROM Experiencia e WHERE e.nivelDeCargoAltoAcademico = :nivelDeCargoAltoAcademico"),
-    @NamedQuery(name = "Experiencia.findByNivelDeCargoAltoPoli", query = "SELECT e FROM Experiencia e WHERE e.nivelDeCargoAltoPoli = :nivelDeCargoAltoPoli")})
+    @NamedQuery(name = "Experiencia.findByIdExperiencia", query = "SELECT e FROM Experiencia e WHERE e.idExperiencia = :idExperiencia"),
+    @NamedQuery(name = "Experiencia.findByTotalExperienciaReal", query = "SELECT e FROM Experiencia e WHERE e.totalExperienciaReal = :totalExperienciaReal"),
+    @NamedQuery(name = "Experiencia.findByTotalExperienciaDocente", query = "SELECT e FROM Experiencia e WHERE e.totalExperienciaDocente = :totalExperienciaDocente")})
 public class Experiencia implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "codigo_experiencia")
-    private Long codigoExperiencia;
-    @Column(name = "experencia_real")
-    private Long experenciaReal;
-    @Size(max = 50)
-    @Column(name = "nivel_de_cargo_alto")
-    private String nivelDeCargoAlto;
-    @Column(name = "experencia_diferente_poli")
-    private Long experenciaDiferentePoli;
-    @Column(name = "experencia_poli")
-    private Long experenciaPoli;
-    @Size(max = 50)
-    @Column(name = "nivel_de_cargo_alto_academico")
-    private String nivelDeCargoAltoAcademico;
-    @Size(max = 50)
-    @Column(name = "nivel_de_cargo_alto_poli")
-    private String nivelDeCargoAltoPoli;
-    @JoinColumn(name = "id_profesor", referencedColumnName = "id_profesor")
+    @Column(name = "ID_EXPERIENCIA")
+    private Long idExperiencia;
+    @Column(name = "TOTAL_EXPERIENCIA_REAL")
+    private Long totalExperienciaReal;
+    @Column(name = "TOTAL_EXPERIENCIA_DOCENTE")
+    private Long totalExperienciaDocente;
+    @OneToMany(mappedBy = "idExperiencia")
+    private Collection<ExperienciaDocente> experienciaDocenteCollection;
+    @OneToMany(mappedBy = "idExperiencia")
+    private Collection<ExperienciaReal> experienciaRealCollection;
+    @JoinColumn(name = "ID_PROFESOR", referencedColumnName = "ID_PROFESOR")
     @ManyToOne
     private Profesor idProfesor;
 
     public Experiencia() {
     }
 
-    public Experiencia(Long codigoExperiencia) {
-        this.codigoExperiencia = codigoExperiencia;
+    public Experiencia(Long idExperiencia) {
+        this.idExperiencia = idExperiencia;
     }
 
-    public Long getCodigoExperiencia() {
-        return codigoExperiencia;
+    public Long getIdExperiencia() {
+        return idExperiencia;
     }
 
-    public void setCodigoExperiencia(Long codigoExperiencia) {
-        this.codigoExperiencia = codigoExperiencia;
+    public void setIdExperiencia(Long idExperiencia) {
+        this.idExperiencia = idExperiencia;
     }
 
-    public Long getExperenciaReal() {
-        return experenciaReal;
+    public Long getTotalExperienciaReal() {
+        return totalExperienciaReal;
     }
 
-    public void setExperenciaReal(Long experenciaReal) {
-        this.experenciaReal = experenciaReal;
+    public void setTotalExperienciaReal(Long totalExperienciaReal) {
+        this.totalExperienciaReal = totalExperienciaReal;
     }
 
-    public String getNivelDeCargoAlto() {
-        return nivelDeCargoAlto;
+    public Long getTotalExperienciaDocente() {
+        return totalExperienciaDocente;
     }
 
-    public void setNivelDeCargoAlto(String nivelDeCargoAlto) {
-        this.nivelDeCargoAlto = nivelDeCargoAlto;
+    public void setTotalExperienciaDocente(Long totalExperienciaDocente) {
+        this.totalExperienciaDocente = totalExperienciaDocente;
     }
 
-    public Long getExperenciaDiferentePoli() {
-        return experenciaDiferentePoli;
+    @XmlTransient
+    public Collection<ExperienciaDocente> getExperienciaDocenteCollection() {
+        return experienciaDocenteCollection;
     }
 
-    public void setExperenciaDiferentePoli(Long experenciaDiferentePoli) {
-        this.experenciaDiferentePoli = experenciaDiferentePoli;
+    public void setExperienciaDocenteCollection(Collection<ExperienciaDocente> experienciaDocenteCollection) {
+        this.experienciaDocenteCollection = experienciaDocenteCollection;
     }
 
-    public Long getExperenciaPoli() {
-        return experenciaPoli;
+    @XmlTransient
+    public Collection<ExperienciaReal> getExperienciaRealCollection() {
+        return experienciaRealCollection;
     }
 
-    public void setExperenciaPoli(Long experenciaPoli) {
-        this.experenciaPoli = experenciaPoli;
-    }
-
-    public String getNivelDeCargoAltoAcademico() {
-        return nivelDeCargoAltoAcademico;
-    }
-
-    public void setNivelDeCargoAltoAcademico(String nivelDeCargoAltoAcademico) {
-        this.nivelDeCargoAltoAcademico = nivelDeCargoAltoAcademico;
-    }
-
-    public String getNivelDeCargoAltoPoli() {
-        return nivelDeCargoAltoPoli;
-    }
-
-    public void setNivelDeCargoAltoPoli(String nivelDeCargoAltoPoli) {
-        this.nivelDeCargoAltoPoli = nivelDeCargoAltoPoli;
+    public void setExperienciaRealCollection(Collection<ExperienciaReal> experienciaRealCollection) {
+        this.experienciaRealCollection = experienciaRealCollection;
     }
 
     public Profesor getIdProfesor() {
@@ -135,7 +113,7 @@ public class Experiencia implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (codigoExperiencia != null ? codigoExperiencia.hashCode() : 0);
+        hash += (idExperiencia != null ? idExperiencia.hashCode() : 0);
         return hash;
     }
 
@@ -146,7 +124,7 @@ public class Experiencia implements Serializable {
             return false;
         }
         Experiencia other = (Experiencia) object;
-        if ((this.codigoExperiencia == null && other.codigoExperiencia != null) || (this.codigoExperiencia != null && !this.codigoExperiencia.equals(other.codigoExperiencia))) {
+        if ((this.idExperiencia == null && other.idExperiencia != null) || (this.idExperiencia != null && !this.idExperiencia.equals(other.idExperiencia))) {
             return false;
         }
         return true;
@@ -154,7 +132,7 @@ public class Experiencia implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.poli.prap.gd.data.Experiencia[ codigoExperiencia=" + codigoExperiencia + " ]";
+        return "edu.poli.prap.gd.data.Experiencia[ idExperiencia=" + idExperiencia + " ]";
     }
     
 }

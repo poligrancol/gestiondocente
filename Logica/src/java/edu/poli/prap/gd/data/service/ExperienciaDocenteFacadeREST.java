@@ -5,7 +5,7 @@
  */
 package edu.poli.prap.gd.data.service;
 
-import edu.poli.prap.gd.data.DetalleExperiencia;
+import edu.poli.prap.gd.data.ExperienciaDocente;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -25,27 +25,27 @@ import javax.ws.rs.core.MediaType;
  * @author CAMILO
  */
 @Stateless
-@Path("edu.poli.prap.gd.data.detalleexperiencia")
-public class DetalleExperienciaFacadeREST extends AbstractFacade<DetalleExperiencia> {
+@Path("edu.poli.prap.gd.data.experienciadocente")
+public class ExperienciaDocenteFacadeREST extends AbstractFacade<ExperienciaDocente> {
 
     @PersistenceContext(unitName = "LogicaPU")
     private EntityManager em;
 
-    public DetalleExperienciaFacadeREST() {
-        super(DetalleExperiencia.class);
+    public ExperienciaDocenteFacadeREST() {
+        super(ExperienciaDocente.class);
     }
 
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(DetalleExperiencia entity) {
+    public void create(ExperienciaDocente entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") Long id, DetalleExperiencia entity) {
+    public void edit(@PathParam("id") Long id, ExperienciaDocente entity) {
         super.edit(entity);
     }
 
@@ -58,21 +58,21 @@ public class DetalleExperienciaFacadeREST extends AbstractFacade<DetalleExperien
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public DetalleExperiencia find(@PathParam("id") Long id) {
+    public ExperienciaDocente find(@PathParam("id") Long id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<DetalleExperiencia> findAll() {
+    public List<ExperienciaDocente> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<DetalleExperiencia> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<ExperienciaDocente> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 

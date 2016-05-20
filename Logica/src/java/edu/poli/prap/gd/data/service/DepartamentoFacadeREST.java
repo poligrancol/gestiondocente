@@ -18,14 +18,16 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 /**
  *
- * @author julianolarte
+ * @author CAMILO
  */
 @Stateless
-@Path("departamento")
+@Path("edu.poli.prap.gd.data.departamento")
 public class DepartamentoFacadeREST extends AbstractFacade<Departamento> {
+
     @PersistenceContext(unitName = "LogicaPU")
     private EntityManager em;
 
@@ -35,14 +37,14 @@ public class DepartamentoFacadeREST extends AbstractFacade<Departamento> {
 
     @POST
     @Override
-    @Consumes({"application/xml", "application/json"})
+    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public void create(Departamento entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
-    @Consumes({"application/xml", "application/json"})
+    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public void edit(@PathParam("id") Long id, Departamento entity) {
         super.edit(entity);
     }
@@ -55,28 +57,28 @@ public class DepartamentoFacadeREST extends AbstractFacade<Departamento> {
 
     @GET
     @Path("{id}")
-    @Produces({"application/xml", "application/json"})
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Departamento find(@PathParam("id") Long id) {
         return super.find(id);
     }
 
     @GET
     @Override
-    @Produces({"application/xml", "application/json"})
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<Departamento> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
-    @Produces({"application/xml", "application/json"})
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<Departamento> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 
     @GET
     @Path("count")
-    @Produces("text/plain")
+    @Produces(MediaType.TEXT_PLAIN)
     public String countREST() {
         return String.valueOf(super.count());
     }
@@ -85,5 +87,5 @@ public class DepartamentoFacadeREST extends AbstractFacade<Departamento> {
     protected EntityManager getEntityManager() {
         return em;
     }
-
+    
 }

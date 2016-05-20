@@ -7,13 +7,13 @@ package edu.poli.prap.gd.data.service;
 
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
 /**
  *
- * @author julianolarte
+ * @author CAMILO
  */
 public abstract class AbstractFacade<T> {
+
     private Class<T> entityClass;
 
     public AbstractFacade(Class<T> entityClass) {
@@ -60,5 +60,5 @@ public abstract class AbstractFacade<T> {
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
-
+    
 }

@@ -24,37 +24,38 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author julianolarte
+ * @author CAMILO
  */
 @Entity
-@Table(name = "archivos_adjuntos")
+@Table(name = "ARCHIVOS_ADJUNTOS")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "ArchivosAdjuntos.findAll", query = "SELECT a FROM ArchivosAdjuntos a"),
     @NamedQuery(name = "ArchivosAdjuntos.findByIdArchivo", query = "SELECT a FROM ArchivosAdjuntos a WHERE a.idArchivo = :idArchivo"),
-    @NamedQuery(name = "ArchivosAdjuntos.findByDescripcion", query = "SELECT a FROM ArchivosAdjuntos a WHERE a.descripcion = :descripcion"),
-    @NamedQuery(name = "ArchivosAdjuntos.findByPdf", query = "SELECT a FROM ArchivosAdjuntos a WHERE a.pdf = :pdf")})
+    @NamedQuery(name = "ArchivosAdjuntos.findByClaseDocumento", query = "SELECT a FROM ArchivosAdjuntos a WHERE a.claseDocumento = :claseDocumento"),
+    @NamedQuery(name = "ArchivosAdjuntos.findByExtensionArchivo", query = "SELECT a FROM ArchivosAdjuntos a WHERE a.extensionArchivo = :extensionArchivo")})
 public class ArchivosAdjuntos implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "id_archivo")
+    @Column(name = "ID_ARCHIVO")
     private Long idArchivo;
     @Size(max = 50)
-    @Column(name = "descripcion")
-    private String descripcion;
+    @Column(name = "CLASE_DOCUMENTO")
+    private String claseDocumento;
     @Size(max = 50)
-    @Column(name = "pdf")
-    private String pdf;
-    @OneToMany(mappedBy = "idArchivo")
-    private Collection<Titulo> tituloCollection;
-    @JoinColumn(name = "num_doc_profesional", referencedColumnName = "num_doc_profesional")
-    @ManyToOne
-    private TarjetaProfesional numDocProfesional;
-    @JoinColumn(name = "id_profesor", referencedColumnName = "id_profesor")
+    @Column(name = "EXTENSION_ARCHIVO")
+    private String extensionArchivo;
+    @JoinColumn(name = "ID_PROFESOR", referencedColumnName = "ID_PROFESOR")
     @ManyToOne
     private Profesor idProfesor;
+    @JoinColumn(name = "NUM_DOC_PROFESIONAL", referencedColumnName = "NUM_DOC_PROFESIONAL")
+    @ManyToOne
+    private TarjetaProfesional numDocProfesional;
+    @OneToMany(mappedBy = "idArchivo")
+    private Collection<Titulo> tituloCollection;
 
     public ArchivosAdjuntos() {
     }
@@ -71,29 +72,28 @@ public class ArchivosAdjuntos implements Serializable {
         this.idArchivo = idArchivo;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getClaseDocumento() {
+        return claseDocumento;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setClaseDocumento(String claseDocumento) {
+        this.claseDocumento = claseDocumento;
     }
 
-    public String getPdf() {
-        return pdf;
+    public String getExtensionArchivo() {
+        return extensionArchivo;
     }
 
-    public void setPdf(String pdf) {
-        this.pdf = pdf;
+    public void setExtensionArchivo(String extensionArchivo) {
+        this.extensionArchivo = extensionArchivo;
     }
 
-    @XmlTransient
-    public Collection<Titulo> getTituloCollection() {
-        return tituloCollection;
+    public Profesor getIdProfesor() {
+        return idProfesor;
     }
 
-    public void setTituloCollection(Collection<Titulo> tituloCollection) {
-        this.tituloCollection = tituloCollection;
+    public void setIdProfesor(Profesor idProfesor) {
+        this.idProfesor = idProfesor;
     }
 
     public TarjetaProfesional getNumDocProfesional() {
@@ -104,12 +104,13 @@ public class ArchivosAdjuntos implements Serializable {
         this.numDocProfesional = numDocProfesional;
     }
 
-    public Profesor getIdProfesor() {
-        return idProfesor;
+    @XmlTransient
+    public Collection<Titulo> getTituloCollection() {
+        return tituloCollection;
     }
 
-    public void setIdProfesor(Profesor idProfesor) {
-        this.idProfesor = idProfesor;
+    public void setTituloCollection(Collection<Titulo> tituloCollection) {
+        this.tituloCollection = tituloCollection;
     }
 
     @Override

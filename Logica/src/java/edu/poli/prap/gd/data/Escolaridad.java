@@ -24,10 +24,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author julianolarte
+ * @author CAMILO
  */
 @Entity
-@Table(name = "escolaridad")
+@Table(name = "ESCOLARIDAD")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Escolaridad.findAll", query = "SELECT e FROM Escolaridad e"),
@@ -41,43 +41,44 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Escolaridad.findByConvalidado", query = "SELECT e FROM Escolaridad e WHERE e.convalidado = :convalidado"),
     @NamedQuery(name = "Escolaridad.findByEstadoEstudio", query = "SELECT e FROM Escolaridad e WHERE e.estadoEstudio = :estadoEstudio")})
 public class Escolaridad implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "codigo_escolaridad")
+    @Column(name = "CODIGO_ESCOLARIDAD")
     private Long codigoEscolaridad;
     @Size(max = 50)
-    @Column(name = "institucion")
+    @Column(name = "INSTITUCION")
     private String institucion;
     @Size(max = 50)
-    @Column(name = "nivel")
+    @Column(name = "NIVEL")
     private String nivel;
     @Size(max = 50)
-    @Column(name = "facultad")
+    @Column(name = "FACULTAD")
     private String facultad;
-    @Column(name = "anos")
+    @Column(name = "ANOS")
     private Long anos;
-    @Column(name = "fecha_de_inicio")
+    @Column(name = "FECHA_DE_INICIO")
     @Temporal(TemporalType.DATE)
     private Date fechaDeInicio;
-    @Column(name = "fecha_grado")
+    @Column(name = "FECHA_GRADO")
     @Temporal(TemporalType.DATE)
     private Date fechaGrado;
     @Size(max = 50)
-    @Column(name = "convalidado")
+    @Column(name = "CONVALIDADO")
     private String convalidado;
-    @Column(name = "estado_estudio")
-    private Boolean estadoEstudio;
-    @JoinColumn(name = "id_titulo", referencedColumnName = "id_titulo")
-    @ManyToOne
-    private Titulo idTitulo;
-    @JoinColumn(name = "id_profesor", referencedColumnName = "id_profesor")
-    @ManyToOne
-    private Profesor idProfesor;
-    @JoinColumn(name = "id_pais", referencedColumnName = "id_pais")
+    @Column(name = "ESTADO_ESTUDIO")
+    private Integer estadoEstudio;
+    @JoinColumn(name = "ID_PAIS", referencedColumnName = "ID_PAIS")
     @ManyToOne
     private Pais idPais;
+    @JoinColumn(name = "ID_PROFESOR", referencedColumnName = "ID_PROFESOR")
+    @ManyToOne
+    private Profesor idProfesor;
+    @JoinColumn(name = "ID_TITULO", referencedColumnName = "ID_TITULO")
+    @ManyToOne
+    private Titulo idTitulo;
 
     public Escolaridad() {
     }
@@ -150,20 +151,20 @@ public class Escolaridad implements Serializable {
         this.convalidado = convalidado;
     }
 
-    public Boolean getEstadoEstudio() {
+    public Integer getEstadoEstudio() {
         return estadoEstudio;
     }
 
-    public void setEstadoEstudio(Boolean estadoEstudio) {
+    public void setEstadoEstudio(Integer estadoEstudio) {
         this.estadoEstudio = estadoEstudio;
     }
 
-    public Titulo getIdTitulo() {
-        return idTitulo;
+    public Pais getIdPais() {
+        return idPais;
     }
 
-    public void setIdTitulo(Titulo idTitulo) {
-        this.idTitulo = idTitulo;
+    public void setIdPais(Pais idPais) {
+        this.idPais = idPais;
     }
 
     public Profesor getIdProfesor() {
@@ -174,12 +175,12 @@ public class Escolaridad implements Serializable {
         this.idProfesor = idProfesor;
     }
 
-    public Pais getIdPais() {
-        return idPais;
+    public Titulo getIdTitulo() {
+        return idTitulo;
     }
 
-    public void setIdPais(Pais idPais) {
-        this.idPais = idPais;
+    public void setIdTitulo(Titulo idTitulo) {
+        this.idTitulo = idTitulo;
     }
 
     @Override

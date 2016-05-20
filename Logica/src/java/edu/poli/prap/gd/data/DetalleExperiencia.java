@@ -6,7 +6,6 @@
 package edu.poli.prap.gd.data;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -16,21 +15,19 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author julianolarte
+ * @author CAMILO
  */
 @Entity
-@Table(name = "detalle_experiencia")
+@Table(name = "DETALLE_EXPERIENCIA")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "DetalleExperiencia.findAll", query = "SELECT d FROM DetalleExperiencia d"),
@@ -42,34 +39,33 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "DetalleExperiencia.findByFechaFinal", query = "SELECT d FROM DetalleExperiencia d WHERE d.fechaFinal = :fechaFinal"),
     @NamedQuery(name = "DetalleExperiencia.findByJefe", query = "SELECT d FROM DetalleExperiencia d WHERE d.jefe = :jefe")})
 public class DetalleExperiencia implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "id_detalle")
+    @Column(name = "ID_DETALLE")
     private Long idDetalle;
     @Size(max = 50)
-    @Column(name = "cargo")
+    @Column(name = "CARGO")
     private String cargo;
-    @Column(name = "duracion")
+    @Column(name = "DURACION")
     private Long duracion;
     @Size(max = 50)
-    @Column(name = "empresa")
+    @Column(name = "EMPRESA")
     private String empresa;
-    @Column(name = "fecha_inicio")
+    @Column(name = "FECHA_INICIO")
     @Temporal(TemporalType.DATE)
     private Date fechaInicio;
-    @Column(name = "fecha_final")
+    @Column(name = "FECHA_FINAL")
     @Temporal(TemporalType.DATE)
     private Date fechaFinal;
     @Size(max = 50)
-    @Column(name = "jefe")
+    @Column(name = "JEFE")
     private String jefe;
-    @JoinColumn(name = "id_profesor", referencedColumnName = "id_profesor")
+    @JoinColumn(name = "ID_PROFESOR", referencedColumnName = "ID_PROFESOR")
     @ManyToOne
     private Profesor idProfesor;
-    @OneToMany(mappedBy = "idDetalle")
-    private Collection<Materias> materiasCollection;
 
     public DetalleExperiencia() {
     }
@@ -140,15 +136,6 @@ public class DetalleExperiencia implements Serializable {
 
     public void setIdProfesor(Profesor idProfesor) {
         this.idProfesor = idProfesor;
-    }
-
-    @XmlTransient
-    public Collection<Materias> getMateriasCollection() {
-        return materiasCollection;
-    }
-
-    public void setMateriasCollection(Collection<Materias> materiasCollection) {
-        this.materiasCollection = materiasCollection;
     }
 
     @Override
