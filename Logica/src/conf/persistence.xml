@@ -3,6 +3,7 @@
   <persistence-unit name="LogicaPU" transaction-type="JTA">
     <jta-data-source>java:app/gestiondocente</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
-    <properties/>
+    <properties>
+    </properties>
   </persistence-unit>
 </persistence>

@@ -25,7 +25,7 @@ import javax.ws.rs.core.MediaType;
  * @author Giovanni
  */
 @Stateless
-@Path("edu.poli.prap.gd.data.service.escolaridad")
+@Path("edu.poli.prap.gd.data.escolaridad")
 public class EscolaridadFacadeREST extends AbstractFacade<Escolaridad> {
 
     @PersistenceContext(unitName = "LogicaPU")

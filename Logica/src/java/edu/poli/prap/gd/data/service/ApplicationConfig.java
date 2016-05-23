@@ -35,6 +35,7 @@ public class ApplicationConfig extends Application {
         resources.add(edu.poli.prap.gd.data.service.EscolaridadFacadeREST.class);
         resources.add(edu.poli.prap.gd.data.service.ExperienciaFacadeREST.class);
         resources.add(edu.poli.prap.gd.data.service.MateriaFacadeREST.class);
+        resources.add(edu.poli.prap.gd.data.service.MateriasFacadeREST.class);
         resources.add(edu.poli.prap.gd.data.service.PaisFacadeREST.class);
         resources.add(edu.poli.prap.gd.data.service.ProfesorFacadeREST.class);
         resources.add(edu.poli.prap.gd.data.service.TarjetaProfesionalFacadeREST.class);
