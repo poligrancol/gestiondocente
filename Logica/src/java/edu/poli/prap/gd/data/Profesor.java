@@ -27,10 +27,10 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author julianolarte
+ * @author Giovanni
  */
 @Entity
-@Table(name = "profesor")
+@Table(name = "PROFESOR")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Profesor.findAll", query = "SELECT p FROM Profesor p"),
@@ -51,78 +51,80 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Profesor.findByCelular", query = "SELECT p FROM Profesor p WHERE p.celular = :celular"),
     @NamedQuery(name = "Profesor.findByDireccion", query = "SELECT p FROM Profesor p WHERE p.direccion = :direccion")})
 public class Profesor implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "id_profesor")
+    @Column(name = "ID_PROFESOR")
     private Long idProfesor;
     @Size(max = 50)
-    @Column(name = "tipo_documento")
+    @Column(name = "TIPO_DOCUMENTO")
     private String tipoDocumento;
-    @Column(name = "numero_documento")
+    @Column(name = "NUMERO_DOCUMENTO")
     private Long numeroDocumento;
     @Size(max = 50)
-    @Column(name = "nombre")
+    @Column(name = "NOMBRE")
     private String nombre;
     @Size(max = 50)
-    @Column(name = "apellido")
+    @Column(name = "APELLIDO")
     private String apellido;
-    @Column(name = "fecha_de_expedicion")
+    @Column(name = "FECHA_DE_EXPEDICION")
     @Temporal(TemporalType.DATE)
     private Date fechaDeExpedicion;
     @Size(max = 50)
-    @Column(name = "lugar_de_expedicion")
+    @Column(name = "LUGAR_DE_EXPEDICION")
     private String lugarDeExpedicion;
     @Size(max = 50)
-    @Column(name = "rh")
+    @Column(name = "RH")
     private String rh;
     @Size(max = 50)
-    @Column(name = "genero")
+    @Column(name = "GENERO")
     private String genero;
-    @Column(name = "fecha_de_nacimiento")
+    @Column(name = "FECHA_DE_NACIMIENTO")
     @Temporal(TemporalType.DATE)
     private Date fechaDeNacimiento;
     @Size(max = 50)
-    @Column(name = "Estado_Civil")
+    @Column(name = "ESTADO_CIVIL")
     private String estadoCivil;
     @Size(max = 50)
-    @Column(name = "email_personal")
+    @Column(name = "EMAIL_PERSONAL")
     private String emailPersonal;
     @Size(max = 50)
-    @Column(name = "email_institucional")
+    @Column(name = "EMAIL_INSTITUCIONAL")
     private String emailInstitucional;
     @Size(max = 50)
-    @Column(name = "telefono_fijo")
+    @Column(name = "TELEFONO_FIJO")
     private String telefonoFijo;
-    @Column(name = "celular")
+    @Column(name = "CELULAR")
     private Long celular;
-    @Column(name = "direccion")
+    @Size(max = 50)
+    @Column(name = "DIRECCION")
     private String direccion;
-    @JoinColumn(name = "id_pais_de_origen", referencedColumnName = "id_pais")
-    @ManyToOne
-    private Pais idPaisDeOrigen;
-    @JoinColumn(name = "id_pais_lugar_nacimiento", referencedColumnName = "id_pais")
-    @ManyToOne
-    private Pais idPaisLugarNacimiento;
-    @JoinColumn(name = "id_pais_nacionalidad", referencedColumnName = "id_pais")
-    @ManyToOne
-    private Pais idPaisNacionalidad;
-    @JoinColumn(name = "id_departamento", referencedColumnName = "id_departamento")
-    @ManyToOne
-    private Departamento idDepartamento;
-    @OneToMany(mappedBy = "idProfesor")
-    private Collection<Titulo> tituloCollection;
     @OneToMany(mappedBy = "idProfesor")
     private Collection<DetalleExperiencia> detalleExperienciaCollection;
     @OneToMany(mappedBy = "idProfesor")
-    private Collection<Experiencia> experienciaCollection;
-    @OneToMany(mappedBy = "idProfesor")
-    private Collection<ArchivosAdjuntos> archivosAdjuntosCollection;
+    private Collection<TarjetaProfesional> tarjetaProfesionalCollection;
     @OneToMany(mappedBy = "idProfesor")
     private Collection<Escolaridad> escolaridadCollection;
     @OneToMany(mappedBy = "idProfesor")
-    private Collection<TarjetaProfesional> tarjetaProfesionalCollection;
+    private Collection<ArchivosAdjuntos> archivosAdjuntosCollection;
+    @OneToMany(mappedBy = "idProfesor")
+    private Collection<Titulo> tituloCollection;
+    @OneToMany(mappedBy = "idProfesor")
+    private Collection<Experiencia> experienciaCollection;
+    @JoinColumn(name = "ID_DEPARTAMENTO", referencedColumnName = "ID_DEPARTAMENTO")
+    @ManyToOne
+    private Departamento idDepartamento;
+    @JoinColumn(name = "ID_PAIS_DE_ORIGEN", referencedColumnName = "ID_PAIS")
+    @ManyToOne
+    private Pais idPaisDeOrigen;
+    @JoinColumn(name = "ID_PAIS_LUGAR_NACIMIENTO", referencedColumnName = "ID_PAIS")
+    @ManyToOne
+    private Pais idPaisLugarNacimiento;
+    @JoinColumn(name = "ID_PAIS_NACIONALIDAD", referencedColumnName = "ID_PAIS")
+    @ManyToOne
+    private Pais idPaisNacionalidad;
 
     public Profesor() {
     }
@@ -259,6 +261,68 @@ public class Profesor implements Serializable {
         this.direccion = direccion;
     }
 
+    @XmlTransient
+    public Collection<DetalleExperiencia> getDetalleExperienciaCollection() {
+        return detalleExperienciaCollection;
+    }
+
+    public void setDetalleExperienciaCollection(Collection<DetalleExperiencia> detalleExperienciaCollection) {
+        this.detalleExperienciaCollection = detalleExperienciaCollection;
+    }
+
+    @XmlTransient
+    public Collection<TarjetaProfesional> getTarjetaProfesionalCollection() {
+        return tarjetaProfesionalCollection;
+    }
+
+    public void setTarjetaProfesionalCollection(Collection<TarjetaProfesional> tarjetaProfesionalCollection) {
+        this.tarjetaProfesionalCollection = tarjetaProfesionalCollection;
+    }
+
+    @XmlTransient
+    public Collection<Escolaridad> getEscolaridadCollection() {
+        return escolaridadCollection;
+    }
+
+    public void setEscolaridadCollection(Collection<Escolaridad> escolaridadCollection) {
+        this.escolaridadCollection = escolaridadCollection;
+    }
+
+    @XmlTransient
+    public Collection<ArchivosAdjuntos> getArchivosAdjuntosCollection() {
+        return archivosAdjuntosCollection;
+    }
+
+    public void setArchivosAdjuntosCollection(Collection<ArchivosAdjuntos> archivosAdjuntosCollection) {
+        this.archivosAdjuntosCollection = archivosAdjuntosCollection;
+    }
+
+    @XmlTransient
+    public Collection<Titulo> getTituloCollection() {
+        return tituloCollection;
+    }
+
+    public void setTituloCollection(Collection<Titulo> tituloCollection) {
+        this.tituloCollection = tituloCollection;
+    }
+
+    @XmlTransient
+    public Collection<Experiencia> getExperienciaCollection() {
+        return experienciaCollection;
+    }
+
+    public void setExperienciaCollection(Collection<Experiencia> experienciaCollection) {
+        this.experienciaCollection = experienciaCollection;
+    }
+
+    public Departamento getIdDepartamento() {
+        return idDepartamento;
+    }
+
+    public void setIdDepartamento(Departamento idDepartamento) {
+        this.idDepartamento = idDepartamento;
+    }
+
     public Pais getIdPaisDeOrigen() {
         return idPaisDeOrigen;
     }
@@ -281,68 +345,6 @@ public class Profesor implements Serializable {
 
     public void setIdPaisNacionalidad(Pais idPaisNacionalidad) {
         this.idPaisNacionalidad = idPaisNacionalidad;
-    }
-
-    public Departamento getIdDepartamento() {
-        return idDepartamento;
-    }
-
-    public void setIdDepartamento(Departamento idDepartamento) {
-        this.idDepartamento = idDepartamento;
-    }
-
-    @XmlTransient
-    public Collection<Titulo> getTituloCollection() {
-        return tituloCollection;
-    }
-
-    public void setTituloCollection(Collection<Titulo> tituloCollection) {
-        this.tituloCollection = tituloCollection;
-    }
-
-    @XmlTransient
-    public Collection<DetalleExperiencia> getDetalleExperienciaCollection() {
-        return detalleExperienciaCollection;
-    }
-
-    public void setDetalleExperienciaCollection(Collection<DetalleExperiencia> detalleExperienciaCollection) {
-        this.detalleExperienciaCollection = detalleExperienciaCollection;
-    }
-
-    @XmlTransient
-    public Collection<Experiencia> getExperienciaCollection() {
-        return experienciaCollection;
-    }
-
-    public void setExperienciaCollection(Collection<Experiencia> experienciaCollection) {
-        this.experienciaCollection = experienciaCollection;
-    }
-
-    @XmlTransient
-    public Collection<ArchivosAdjuntos> getArchivosAdjuntosCollection() {
-        return archivosAdjuntosCollection;
-    }
-
-    public void setArchivosAdjuntosCollection(Collection<ArchivosAdjuntos> archivosAdjuntosCollection) {
-        this.archivosAdjuntosCollection = archivosAdjuntosCollection;
-    }
-
-    @XmlTransient
-    public Collection<Escolaridad> getEscolaridadCollection() {
-        return escolaridadCollection;
-    }
-
-    public void setEscolaridadCollection(Collection<Escolaridad> escolaridadCollection) {
-        this.escolaridadCollection = escolaridadCollection;
-    }
-
-    @XmlTransient
-    public Collection<TarjetaProfesional> getTarjetaProfesionalCollection() {
-        return tarjetaProfesionalCollection;
-    }
-
-    public void setTarjetaProfesionalCollection(Collection<TarjetaProfesional> tarjetaProfesionalCollection) {
-        this.tarjetaProfesionalCollection = tarjetaProfesionalCollection;
     }
 
     @Override

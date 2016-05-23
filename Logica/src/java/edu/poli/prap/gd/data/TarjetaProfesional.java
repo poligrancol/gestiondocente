@@ -27,10 +27,10 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author julianolarte
+ * @author Giovanni
  */
 @Entity
-@Table(name = "tarjeta_profesional")
+@Table(name = "TARJETA_PROFESIONAL")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TarjetaProfesional.findAll", query = "SELECT t FROM TarjetaProfesional t"),
@@ -39,26 +39,27 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "TarjetaProfesional.findByFechaDeExpedicionProfesional", query = "SELECT t FROM TarjetaProfesional t WHERE t.fechaDeExpedicionProfesional = :fechaDeExpedicionProfesional"),
     @NamedQuery(name = "TarjetaProfesional.findByLugarDeExpedicion", query = "SELECT t FROM TarjetaProfesional t WHERE t.lugarDeExpedicion = :lugarDeExpedicion")})
 public class TarjetaProfesional implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "num_doc_profesional")
+    @Column(name = "NUM_DOC_PROFESIONAL")
     private Long numDocProfesional;
     @Size(max = 50)
-    @Column(name = "documento_profesional")
+    @Column(name = "DOCUMENTO_PROFESIONAL")
     private String documentoProfesional;
-    @Column(name = "fecha_de_expedicion_profesional")
+    @Column(name = "FECHA_DE_EXPEDICION_PROFESIONAL")
     @Temporal(TemporalType.DATE)
     private Date fechaDeExpedicionProfesional;
     @Size(max = 50)
-    @Column(name = "lugar_de_expedicion")
+    @Column(name = "LUGAR_DE_EXPEDICION")
     private String lugarDeExpedicion;
-    @OneToMany(mappedBy = "numDocProfesional")
-    private Collection<ArchivosAdjuntos> archivosAdjuntosCollection;
-    @JoinColumn(name = "id_profesor", referencedColumnName = "id_profesor")
+    @JoinColumn(name = "ID_PROFESOR", referencedColumnName = "ID_PROFESOR")
     @ManyToOne
     private Profesor idProfesor;
+    @OneToMany(mappedBy = "numDocProfesional")
+    private Collection<ArchivosAdjuntos> archivosAdjuntosCollection;
 
     public TarjetaProfesional() {
     }
@@ -99,6 +100,14 @@ public class TarjetaProfesional implements Serializable {
         this.lugarDeExpedicion = lugarDeExpedicion;
     }
 
+    public Profesor getIdProfesor() {
+        return idProfesor;
+    }
+
+    public void setIdProfesor(Profesor idProfesor) {
+        this.idProfesor = idProfesor;
+    }
+
     @XmlTransient
     public Collection<ArchivosAdjuntos> getArchivosAdjuntosCollection() {
         return archivosAdjuntosCollection;
@@ -106,14 +115,6 @@ public class TarjetaProfesional implements Serializable {
 
     public void setArchivosAdjuntosCollection(Collection<ArchivosAdjuntos> archivosAdjuntosCollection) {
         this.archivosAdjuntosCollection = archivosAdjuntosCollection;
-    }
-
-    public Profesor getIdProfesor() {
-        return idProfesor;
-    }
-
-    public void setIdProfesor(Profesor idProfesor) {
-        this.idProfesor = idProfesor;
     }
 
     @Override

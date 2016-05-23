@@ -21,10 +21,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author julianolarte
+ * @author Giovanni
  */
 @Entity
-@Table(name = "experiencia")
+@Table(name = "EXPERIENCIA")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Experiencia.findAll", query = "SELECT e FROM Experiencia e"),
@@ -36,28 +36,29 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Experiencia.findByNivelDeCargoAltoAcademico", query = "SELECT e FROM Experiencia e WHERE e.nivelDeCargoAltoAcademico = :nivelDeCargoAltoAcademico"),
     @NamedQuery(name = "Experiencia.findByNivelDeCargoAltoPoli", query = "SELECT e FROM Experiencia e WHERE e.nivelDeCargoAltoPoli = :nivelDeCargoAltoPoli")})
 public class Experiencia implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "codigo_experiencia")
+    @Column(name = "CODIGO_EXPERIENCIA")
     private Long codigoExperiencia;
-    @Column(name = "experencia_real")
+    @Column(name = "EXPERENCIA_REAL")
     private Long experenciaReal;
     @Size(max = 50)
-    @Column(name = "nivel_de_cargo_alto")
+    @Column(name = "NIVEL_DE_CARGO_ALTO")
     private String nivelDeCargoAlto;
-    @Column(name = "experencia_diferente_poli")
+    @Column(name = "EXPERENCIA_DIFERENTE_POLI")
     private Long experenciaDiferentePoli;
-    @Column(name = "experencia_poli")
+    @Column(name = "EXPERENCIA_POLI")
     private Long experenciaPoli;
     @Size(max = 50)
-    @Column(name = "nivel_de_cargo_alto_academico")
+    @Column(name = "NIVEL_DE_CARGO_ALTO_ACADEMICO")
     private String nivelDeCargoAltoAcademico;
     @Size(max = 50)
-    @Column(name = "nivel_de_cargo_alto_poli")
+    @Column(name = "NIVEL_DE_CARGO_ALTO_POLI")
     private String nivelDeCargoAltoPoli;
-    @JoinColumn(name = "id_profesor", referencedColumnName = "id_profesor")
+    @JoinColumn(name = "ID_PROFESOR", referencedColumnName = "ID_PROFESOR")
     @ManyToOne
     private Profesor idProfesor;
 

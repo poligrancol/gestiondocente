@@ -24,33 +24,34 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author julianolarte
+ * @author Giovanni
  */
 @Entity
-@Table(name = "titulo")
+@Table(name = "TITULO")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Titulo.findAll", query = "SELECT t FROM Titulo t"),
     @NamedQuery(name = "Titulo.findByIdTitulo", query = "SELECT t FROM Titulo t WHERE t.idTitulo = :idTitulo"),
     @NamedQuery(name = "Titulo.findByDiploma", query = "SELECT t FROM Titulo t WHERE t.diploma = :diploma")})
 public class Titulo implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "id_titulo")
+    @Column(name = "ID_TITULO")
     private Long idTitulo;
     @Size(max = 50)
-    @Column(name = "diploma")
+    @Column(name = "DIPLOMA")
     private String diploma;
-    @JoinColumn(name = "id_profesor", referencedColumnName = "id_profesor")
-    @ManyToOne
-    private Profesor idProfesor;
-    @JoinColumn(name = "id_archivo", referencedColumnName = "id_archivo")
-    @ManyToOne
-    private ArchivosAdjuntos idArchivo;
     @OneToMany(mappedBy = "idTitulo")
     private Collection<Escolaridad> escolaridadCollection;
+    @JoinColumn(name = "ID_ARCHIVO", referencedColumnName = "ID_ARCHIVO")
+    @ManyToOne
+    private ArchivosAdjuntos idArchivo;
+    @JoinColumn(name = "ID_PROFESOR", referencedColumnName = "ID_PROFESOR")
+    @ManyToOne
+    private Profesor idProfesor;
 
     public Titulo() {
     }
@@ -75,12 +76,13 @@ public class Titulo implements Serializable {
         this.diploma = diploma;
     }
 
-    public Profesor getIdProfesor() {
-        return idProfesor;
+    @XmlTransient
+    public Collection<Escolaridad> getEscolaridadCollection() {
+        return escolaridadCollection;
     }
 
-    public void setIdProfesor(Profesor idProfesor) {
-        this.idProfesor = idProfesor;
+    public void setEscolaridadCollection(Collection<Escolaridad> escolaridadCollection) {
+        this.escolaridadCollection = escolaridadCollection;
     }
 
     public ArchivosAdjuntos getIdArchivo() {
@@ -91,13 +93,12 @@ public class Titulo implements Serializable {
         this.idArchivo = idArchivo;
     }
 
-    @XmlTransient
-    public Collection<Escolaridad> getEscolaridadCollection() {
-        return escolaridadCollection;
+    public Profesor getIdProfesor() {
+        return idProfesor;
     }
 
-    public void setEscolaridadCollection(Collection<Escolaridad> escolaridadCollection) {
-        this.escolaridadCollection = escolaridadCollection;
+    public void setIdProfesor(Profesor idProfesor) {
+        this.idProfesor = idProfesor;
     }
 
     @Override

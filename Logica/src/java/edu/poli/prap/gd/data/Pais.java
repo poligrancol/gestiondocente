@@ -22,33 +22,34 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author julianolarte
+ * @author Giovanni
  */
 @Entity
-@Table(name = "pais")
+@Table(name = "PAIS")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Pais.findAll", query = "SELECT p FROM Pais p"),
     @NamedQuery(name = "Pais.findByIdPais", query = "SELECT p FROM Pais p WHERE p.idPais = :idPais"),
     @NamedQuery(name = "Pais.findByNombre", query = "SELECT p FROM Pais p WHERE p.nombre = :nombre")})
 public class Pais implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "id_pais")
+    @Column(name = "ID_PAIS")
     private Long idPais;
     @Size(max = 50)
-    @Column(name = "nombre")
+    @Column(name = "NOMBRE")
     private String nombre;
+    @OneToMany(mappedBy = "idPais")
+    private Collection<Escolaridad> escolaridadCollection;
     @OneToMany(mappedBy = "idPaisDeOrigen")
     private Collection<Profesor> profesorCollection;
     @OneToMany(mappedBy = "idPaisLugarNacimiento")
     private Collection<Profesor> profesorCollection1;
     @OneToMany(mappedBy = "idPaisNacionalidad")
     private Collection<Profesor> profesorCollection2;
-    @OneToMany(mappedBy = "idPais")
-    private Collection<Escolaridad> escolaridadCollection;
 
     public Pais() {
     }
@@ -71,6 +72,15 @@ public class Pais implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    @XmlTransient
+    public Collection<Escolaridad> getEscolaridadCollection() {
+        return escolaridadCollection;
+    }
+
+    public void setEscolaridadCollection(Collection<Escolaridad> escolaridadCollection) {
+        this.escolaridadCollection = escolaridadCollection;
     }
 
     @XmlTransient
@@ -98,15 +108,6 @@ public class Pais implements Serializable {
 
     public void setProfesorCollection2(Collection<Profesor> profesorCollection2) {
         this.profesorCollection2 = profesorCollection2;
-    }
-
-    @XmlTransient
-    public Collection<Escolaridad> getEscolaridadCollection() {
-        return escolaridadCollection;
-    }
-
-    public void setEscolaridadCollection(Collection<Escolaridad> escolaridadCollection) {
-        this.escolaridadCollection = escolaridadCollection;
     }
 
     @Override

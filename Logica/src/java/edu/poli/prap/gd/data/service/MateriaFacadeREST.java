@@ -5,7 +5,7 @@
  */
 package edu.poli.prap.gd.data.service;
 
-import edu.poli.prap.gd.data.Experiencia;
+import edu.poli.prap.gd.data.Materia;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -25,27 +25,27 @@ import javax.ws.rs.core.MediaType;
  * @author Giovanni
  */
 @Stateless
-@Path("edu.poli.prap.gd.data.service.experiencia")
-public class ExperienciaFacadeREST extends AbstractFacade<Experiencia> {
+@Path("edu.poli.prap.gd.data.service.materia")
+public class MateriaFacadeREST extends AbstractFacade<Materia> {
 
     @PersistenceContext(unitName = "LogicaPU")
     private EntityManager em;
 
-    public ExperienciaFacadeREST() {
-        super(Experiencia.class);
+    public MateriaFacadeREST() {
+        super(Materia.class);
     }
 
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(Experiencia entity) {
+    public void create(Materia entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") Long id, Experiencia entity) {
+    public void edit(@PathParam("id") Long id, Materia entity) {
         super.edit(entity);
     }
 
@@ -58,21 +58,21 @@ public class ExperienciaFacadeREST extends AbstractFacade<Experiencia> {
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Experiencia find(@PathParam("id") Long id) {
+    public Materia find(@PathParam("id") Long id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Experiencia> findAll() {
+    public List<Materia> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Experiencia> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<Materia> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 

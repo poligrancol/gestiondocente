@@ -22,24 +22,25 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author julianolarte
+ * @author Giovanni
  */
 @Entity
-@Table(name = "departamento")
+@Table(name = "DEPARTAMENTO")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Departamento.findAll", query = "SELECT d FROM Departamento d"),
     @NamedQuery(name = "Departamento.findByIdDepartamento", query = "SELECT d FROM Departamento d WHERE d.idDepartamento = :idDepartamento"),
     @NamedQuery(name = "Departamento.findByDescripcion", query = "SELECT d FROM Departamento d WHERE d.descripcion = :descripcion")})
 public class Departamento implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "id_departamento")
+    @Column(name = "ID_DEPARTAMENTO")
     private Long idDepartamento;
     @Size(max = 50)
-    @Column(name = "descripcion")
+    @Column(name = "DESCRIPCION")
     private String descripcion;
     @OneToMany(mappedBy = "idDepartamento")
     private Collection<Profesor> profesorCollection;
