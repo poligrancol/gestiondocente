@@ -7,8 +7,7 @@ define([
     'text!templates/Escolaridad/ListarEscolaridadTemplate.html',
     'text!templates/Escolaridad/EditarEscolaridadTemplate.html',
     'text!templates/Escolaridad/AdjuntarDiplomaTemplate.html',
-    'text!templates/Escolaridad/NuevaEscolaridadTemplate.html',
-        
+    'text!templates/Escolaridad/NuevaEscolaridadTemplate.html'      
 ], 
 
 function ($, _, Backbone, EscolaridadModel, EscolaridadCollection, ListarEscolaridadTemplate, EditarEscolaridadTemplate, AdjuntarDiplomaTemplate, NuevaEscolaridadTemplate) {
@@ -30,19 +29,21 @@ function ($, _, Backbone, EscolaridadModel, EscolaridadCollection, ListarEscolar
             this.cargarDatos(this.model);
         },
           
-        
-        
+           
         cargarTemplate: function (data, template) {
             var t = _.template(template);
             var compiledTemplate = t(data);
             this.$el.html(compiledTemplate);
         },
+        
         cargarDatos: function (pmo) {
             this.cargarTemplate({model: pmo}, ListarEscolaridadTemplate);
         },
+        
         cargarEditar: function () {
             this.cargarTemplate({model: this.model}, EditarEscolaridadTemplate);
-        },            
+        },   
+        
         cargarAdjuntarDip: function () {
             this.cargarTemplate({model: this.model}, AdjuntarDiplomaTemplate);
         },
@@ -54,12 +55,8 @@ function ($, _, Backbone, EscolaridadModel, EscolaridadCollection, ListarEscolar
                 
         errorConsulta: function (e) {
             console.log(e);
-        },
-        events: {
-            "click #dbeditarEcolaridad": "editarEscolaridad",
-            "click #dbnuevaEscolaridad": "adjuntarDiploma",
-            "click #adjuntarDiploma": "nuevaEscolaridad"
-        },
+        },   
+        
         editarEscolaridad : function(){
             console.log('cargar editar datos');
             this.cargarEditar();
@@ -71,7 +68,31 @@ function ($, _, Backbone, EscolaridadModel, EscolaridadCollection, ListarEscolar
         nuevaEscolaridad : function(){
             console.log('cargar nueva escolaridad');
             this.cargarNuevaEsco();
+        },
+        
+        
+        events: {
+            "click #dbeditarEcolaridad": "editarEscolaridad",
+            "click #dbnuevaEscolaridad": "adjuntarDiploma",
+            "click #adjuntarDiploma": "nuevaEscolaridad"
+        },
+        
+        guardarEscolaridad: function(){
+            
+            var escolaridad = new EscolaridadModel;
+            escolaridad.set(("titulo").value,
+            ("institucion").value,
+            ("nivel").value,      
+            ("facultad").value,
+            ("anos").value,
+            ("fechaDeInicio").value,
+            ("fechaGrado").value,
+            ("convalidado").value,
+            ("estadoEstudio").value);
+            escolaridad.sync();
+                
         }
+        
     });
     return EscolaridadView;
 });

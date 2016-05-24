@@ -9,13 +9,17 @@ define([
         urlRoot: URLServer,
         idAttribute: 'codigoEscolaridad',
         defaults: {
+            titulo: "",
             institucion: "",
-            facultad: "",
-            estadoEstudio: "",
-            convalidado: "",
             nivel: "",
-            anos: ""
+            facultad: "",
+            anos: "",
+            fechaDeInicio: "",
+            fechaGrado: "",
+            convalidado: "",
+            estadoEstudio: ""
         },
+        
         toViewJson: function () {
             var result = this.toJSON(); // displayName property is used to render item in the list
             result.displayName = this.get('codigoEscolaridad');

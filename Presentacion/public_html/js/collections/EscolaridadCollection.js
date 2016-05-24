@@ -21,7 +21,7 @@ define([
                     // some (f.e. the same) Web project on the same domain
                     alert('Unable to fulfil the request');
                 }
-            }
+            };
             
             var result = Backbone.sync(method, model, _.extend(options, errorHandler));
             return result;
