@@ -5,30 +5,24 @@ define([
     'text!conf/URLServer.html'
 ], function ($, _, Backbone, URLServer) {
 
-    var ProfesorModel = Backbone.Model.extend({
-        urlRoot: URLServer+"edu.poli.prap.gd.data.profesor",
-        idAttribute: 'idProfesor',
+    var ExperienciaRealModel = Backbone.Model.extend({
+        urlRoot: URLServer+"edu.poli.prap.gd.data.experienciareaL",
+        idAttribute: 'idExperienciaReal',
         defaults: {
-            apellido: "",
-            direccion: "",
-            emailPersonal: "",
-            estadoCivil: "",
-            numeroDocumento: "",
-            lugarDeExpedicion: "",
-            rh: "",
-            telefonoFijo: "",
-            nombre: "",
-            genero: "",
-            tipoDocumento: "",
-            emailInstitucional: "",
-            celular: ""
+            area: "",
+            cargo: "",
+            ciudad: "",
+            fechaInicio: "",
+            fechaFin: "",
+            idExperiencia: "",
+            nombreEmpresa: ""
         },
         toViewJson: function () {
             var result = this.toJSON(); // displayName property is used to render item in the list
-            result.displayName = this.get('idProfesor');
+            result.displayName = this.get('idExperienciaReal');
             return result;
         },
-        sync: function (method, model, options) {
+        sync: function (method, model, options, id) {
             options || (options = {});
             var errorHandler = {
                 error: function (jqXHR, textStatus, errorThrown) {
@@ -42,12 +36,16 @@ define([
                 }}
             
                 if (method == 'create') {
-                    options.url = URLServer+"edu.poli.prap.gd.data.profesor";
+                    options.url = URLServer+"edu.poli.prap.gd.data.experienciareal";
+                }
+                if(method == 'experienciareal'){
+                    options.url = URLServer+"edu.poli.prap.gd.data.experienciareal/prof/"+id;
+                    method="read";
                 }
                 var result = Backbone.sync(method, model, _.extend(options, errorHandler));
                 return result;
             }    
          });
-    return ProfesorModel;
+    return ExperienciaRealModel;
  });
-   
+

@@ -21,11 +21,15 @@ define([
     // Main application router.
     var AppRouter = Backbone.Router.extend({
         routes: {
+            'prof/:id':'ExperienciaLaboral'
         }
     });
     var elv = new ExperienciaLabView();
-    elv.render();
     var app_router = new AppRouter();
+    app_router.on ('route:ExperienciaLaboral', function(id){
+        elv.render({id:id});
+     });
+    //elv.render();
     Backbone.history.start();
     
     var initialize = function () {};

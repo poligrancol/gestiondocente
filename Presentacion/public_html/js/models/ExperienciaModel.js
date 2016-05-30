@@ -5,30 +5,20 @@ define([
     'text!conf/URLServer.html'
 ], function ($, _, Backbone, URLServer) {
 
-    var ProfesorModel = Backbone.Model.extend({
-        urlRoot: URLServer+"edu.poli.prap.gd.data.profesor",
-        idAttribute: 'idProfesor',
+    var ExperienciaModel = Backbone.Model.extend({
+        urlRoot: URLServer+"edu.poli.prap.gd.data.experiencia",
+        idAttribute: 'idExperiencia',
         defaults: {
-            apellido: "",
-            direccion: "",
-            emailPersonal: "",
-            estadoCivil: "",
-            numeroDocumento: "",
-            lugarDeExpedicion: "",
-            rh: "",
-            telefonoFijo: "",
-            nombre: "",
-            genero: "",
-            tipoDocumento: "",
-            emailInstitucional: "",
-            celular: ""
+            idProfesor: "",
+            totalExperienciaDocente: "",
+            totalExperienciaReal: ""
         },
         toViewJson: function () {
             var result = this.toJSON(); // displayName property is used to render item in the list
-            result.displayName = this.get('idProfesor');
+            result.displayName = this.get('idExperiencia');
             return result;
         },
-        sync: function (method, model, options) {
+        sync: function (method, model, options,id) {
             options || (options = {});
             var errorHandler = {
                 error: function (jqXHR, textStatus, errorThrown) {
@@ -42,12 +32,16 @@ define([
                 }}
             
                 if (method == 'create') {
-                    options.url = URLServer+"edu.poli.prap.gd.data.profesor";
+                    options.url = URLServer+"edu.poli.prap.gd.data.experiencia";
+                }method
+                if(method == 'experienciaProfesor'){
+                    options.url = URLServer+"edu.poli.prap.gd.data.experiencia/prof/"+id;
+                    method="read";
                 }
                 var result = Backbone.sync(method, model, _.extend(options, errorHandler));
                 return result;
             }    
          });
-    return ProfesorModel;
+    return ExperienciaModel
  });
    

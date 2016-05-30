@@ -5,27 +5,20 @@ define([
     'text!conf/URLServer.html'
 ], function ($, _, Backbone, URLServer) {
 
-    var ProfesorModel = Backbone.Model.extend({
-        urlRoot: URLServer+"edu.poli.prap.gd.data.profesor",
-        idAttribute: 'idProfesor',
+    var MateriaModel = Backbone.Model.extend({
+        urlRoot: URLServer+"edu.poli.prap.gd.data.materia",
+        idAttribute: 'idMateria',
         defaults: {
-            apellido: "",
-            direccion: "",
-            emailPersonal: "",
-            estadoCivil: "",
-            numeroDocumento: "",
-            lugarDeExpedicion: "",
-            rh: "",
-            telefonoFijo: "",
-            nombre: "",
-            genero: "",
-            tipoDocumento: "",
-            emailInstitucional: "",
-            celular: ""
+            area: "",
+            facultad: "",
+            idExperienciaDocente: "",
+            nombreMateria: "",
+            tiempoDictado: "",
+            tipoMateria: ""
         },
         toViewJson: function () {
             var result = this.toJSON(); // displayName property is used to render item in the list
-            result.displayName = this.get('idProfesor');
+            result.displayName = this.get('idMateria');
             return result;
         },
         sync: function (method, model, options) {
@@ -42,12 +35,13 @@ define([
                 }}
             
                 if (method == 'create') {
-                    options.url = URLServer+"edu.poli.prap.gd.data.profesor";
+                    options.url = URLServer+"edu.poli.prap.gd.data.materia";
                 }
                 var result = Backbone.sync(method, model, _.extend(options, errorHandler));
                 return result;
             }    
          });
-    return ProfesorModel;
+    return MateriaModel;
  });
-   
+
+
