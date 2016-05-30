@@ -5,6 +5,7 @@
  */
 package edu.poli.prap.gd.data.service;
 
+import edu.poli.prap.gd.data.Experiencia;
 import edu.poli.prap.gd.data.ExperienciaReal;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -74,6 +75,18 @@ public class ExperienciaRealFacadeREST extends AbstractFacade<ExperienciaReal> {
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<ExperienciaReal> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
+    }
+    
+    @GET
+    @Path("prof/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<ExperienciaReal> findExperienciaReal(@PathParam("id") Long id) {
+        Experiencia p = new Experiencia();
+        p.setIdExperiencia(id);
+        return getEntityManager().createQuery("SELECT c FROM ExperienciaReal c WHERE c.idExperiencia.idExperiencia = :id")
+        .setParameter("id", p.getIdExperiencia())
+        .getResultList();
+        //return super.findRange(new int[]{from, to});
     }
 
     @GET

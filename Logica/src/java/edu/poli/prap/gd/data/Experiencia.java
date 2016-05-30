@@ -45,8 +45,8 @@ public class Experiencia implements Serializable {
     private Long totalExperienciaReal;
     @Column(name = "TOTAL_EXPERIENCIA_DOCENTE")
     private Long totalExperienciaDocente;
-    @OneToMany(mappedBy = "idExperiencia")
-    private Collection<ExperienciaDocente> experienciaDocenteCollection;
+    //@OneToMany(mappedBy = "idExperiencia")
+    //private Collection<ExperienciaDocente> experienciaDocenteCollection;
     @OneToMany(mappedBy = "idExperiencia")
     private Collection<ExperienciaReal> experienciaRealCollection;
     @JoinColumn(name = "ID_PROFESOR", referencedColumnName = "ID_PROFESOR")
@@ -84,26 +84,26 @@ public class Experiencia implements Serializable {
         this.totalExperienciaDocente = totalExperienciaDocente;
     }
 
-    @XmlTransient
-    public Collection<ExperienciaDocente> getExperienciaDocenteCollection() {
-        return experienciaDocenteCollection;
-    }
+    //(@XmlTransient
+    //public Collection<ExperienciaDocente> getExperienciaDocenteCollection() {
+        //return experienciaDocenteCollection;
+    //}
 
-    public void setExperienciaDocenteCollection(Collection<ExperienciaDocente> experienciaDocenteCollection) {
-        this.experienciaDocenteCollection = experienciaDocenteCollection;
-    }
+    //public void setExperienciaDocenteCollection(Collection<ExperienciaDocente> experienciaDocenteCollection) {
+        //this.experienciaDocenteCollection = experienciaDocenteCollection;
+    //}
 
-    @XmlTransient
-    public Collection<ExperienciaReal> getExperienciaRealCollection() {
-        return experienciaRealCollection;
-    }
+    //@XmlTransient
+    //public Collection<ExperienciaReal> getExperienciaRealCollection() {
+        //return experienciaRealCollection;
+    //}
 
-    public void setExperienciaRealCollection(Collection<ExperienciaReal> experienciaRealCollection) {
-        this.experienciaRealCollection = experienciaRealCollection;
-    }
+    //public void setExperienciaRealCollection(Collection<ExperienciaReal> experienciaRealCollection) {
+        //this.experienciaRealCollection = experienciaRealCollection;
+    //}
 
-    public Profesor getIdProfesor() {
-        return idProfesor;
+    public Long getIdProfesor() {
+        return idProfesor.getIdProfesor();
     }
 
     public void setIdProfesor(Profesor idProfesor) {
