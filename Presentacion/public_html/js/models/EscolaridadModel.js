@@ -14,7 +14,11 @@ define([
             estadoEstudio: "",
             convalidado: "",
             nivel: "",
-            anos: ""
+            anos: "",
+            idTitulo: "",
+            idPais: "",
+            fechaDeInicio: ""
+            
         },
         toViewJson: function () {
             var result = this.toJSON(); // displayName property is used to render item in the list
@@ -36,9 +40,9 @@ define([
                 }
             }
             
-            //if (method == 'create') {
+            if (method == 'create') {
             options.url = that.urlRoot;
-            //}
+            }
             var result = Backbone.sync(method, model, _.extend(options, errorHandler));
             return result;
         }

@@ -45,7 +45,8 @@ define([
                            
                         var  comp = _.template(ListarEscolaridadTemplate);
                         //that.$el.html(comp({usuarios:'PRUEBA'}));
-                        that.$el.html(comp({escolaridades:arra}));
+                        
+                           that.$el.html(comp({escolaridades:arra}));
                        } 
                     }); 
             }

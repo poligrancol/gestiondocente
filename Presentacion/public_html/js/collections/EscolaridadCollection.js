@@ -8,7 +8,10 @@ define([
 
     var EscolaridadCollection = Backbone.Collection.extend({
         model: EscolaridadModel,
-        url: URLServer,
+        url: URLServer+"edu.poli.prap.gd.data.escolaridad",
+        consultarEscolaridad: function(id){
+          this.url += '/' + id;
+        }, 
         sync: function (method, model, options) {
             options || (options = {});
             var errorHandler = {
@@ -22,7 +25,6 @@ define([
                     alert('Unable to fulfil the request');
                 }
             }
-            
             var result = Backbone.sync(method, model, _.extend(options, errorHandler));
             return result;
         }
