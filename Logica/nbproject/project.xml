@@ -10,7 +10,9 @@
             <minimum-ant-version>1.6.5</minimum-ant-version>
             <web-module-libraries/>
             <web-module-additional-libraries/>
-            <source-roots/>
+            <source-roots>
+                <root id="src.config-files.dir"/>
+            </source-roots>
             <test-roots/>
         </data>
         <libraries xmlns="http://www.netbeans.org/ns/ant-project-libraries/1">
