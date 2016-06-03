@@ -6,7 +6,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>SubirArchivo</servlet-name>
-        <url-pattern>/SubirArchivo</url-pattern>
+        <url-pattern>/upload</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
