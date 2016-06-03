@@ -1,0 +1,71 @@
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js'></script>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js'></script>
+        <script src='docente2.js'></script>
+    </head>
+    <body>
+        <div id='header'></div>
+
+        <div id='sidebar'></div>
+
+        <div id='content'></div>
+
+
+        <!-- Templates -->
+        <script type='text/template' id='tpl-create'>
+            <!--
+            Put your controls to create new entity here.
+
+            Class 'new' is used to listen on events in JS code.
+            -->
+            <button class='new'>Create</button>
+        </script>
+
+        <script type='text/template' id='tpl-profesor-list-item'>
+            <!-- modify output display name for item here or change displayName in the JS model code -->
+            <a href='#<%= idProfesor %>'><%= displayName %></a>
+        </script>
+
+        <script type='text/template' id='tpl-profesor-details'>
+            <div>
+            <label>Id:</label>
+            <input type='text' id='idProfesor' name='id' value='<%= typeof(idProfesor)!== "undefined" ? idProfesor : "" %>'  />
+            <!--
+            Put your editing controls for model
+            attribute data (text fields, ...) here
+            <label>nombre:</label>
+            <input type='text' id='nombre' name='nombre' value='<%= nombre %>'/><label>apellido:</label>
+            <input type='text' id='apellido' name='apellido' value='<%= apellido %>'/><label>emailPersonal:</label>
+            <input type='text' id='emailPersonal' name='emailPersonal' value='<%= emailPersonal %>'/><label>direccion:</label>
+            <input type='text' id='direccion' name='direccion' value='<%= direccion %>'/><label>genero:</label>
+            <input type='text' id='genero' name='genero' value='<%= genero %>'/><label>estadoCivil:</label>
+            <input type='text' id='estadoCivil' name='estadoCivil' value='<%= estadoCivil %>'/><label>lugarDeExpedicion:</label>
+            <input type='text' id='lugarDeExpedicion' name='lugarDeExpedicion' value='<%= lugarDeExpedicion %>'/><label>numeroDocumento:</label>
+            <input type='text' id='numeroDocumento' name='numeroDocumento' value='<%= numeroDocumento %>'/><label>tipoDocumento:</label>
+            <input type='text' id='tipoDocumento' name='tipoDocumento' value='<%= tipoDocumento %>'/><label>rh:</label>
+            <input type='text' id='rh' name='rh' value='<%= rh %>'/><label>telefonoFijo:</label>
+            <input type='text' id='telefonoFijo' name='telefonoFijo' value='<%= telefonoFijo %>'/><label>emailInstitucional:</label>
+            <input type='text' id='emailInstitucional' name='emailInstitucional' value='<%= emailInstitucional %>'/><label>celular:</label>
+            <input type='text' id='celular' name='celular' value='<%= celular %>'/>-->
+            <!--
+            Put your controls to create new entity here.
+            Classes 'save' and 'delete' are used to listen on events in JS code.
+            -->
+            <button  class='save'>Save</button>
+            <button  class='delete'>Delete</button>
+            </div>
+        </script>
+
+
+    </body>
+</html>
