@@ -19,7 +19,7 @@ define([
             result.displayName = this.get('idExperienciaDocente');
             return result;
         },
-        sync: function (method, model, options) {
+        sync: function (method, model, options,id) {
             options || (options = {});
             var errorHandler = {
                 error: function (jqXHR, textStatus, errorThrown) {
@@ -31,9 +31,16 @@ define([
                     // some (f.e. the same) Web project on the same domain
                     console.log('Unable to fulfil the request ' + textStatus);
                 }}
-            
                 if (method == 'create') {
                     options.url = URLServer+"edu.poli.prap.gd.data.experienciadocente";
+                }
+                if(method == 'experienciadocente'){
+                    options.url = URLServer+"edu.poli.prap.gd.data.experienciadocente/prof/"+id;
+                    method="read";
+                }
+                if(method == 'countexperienciadocente'){
+                    options.url = URLServer+"edu.poli.prap.gd.data.experienciadocente/count";
+                    method="read";
                 }
                 var result = Backbone.sync(method, model, _.extend(options, errorHandler));
                 return result;

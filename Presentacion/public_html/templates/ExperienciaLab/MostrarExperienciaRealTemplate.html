@@ -2,9 +2,9 @@
     
      <% var arreglo = _.toArray(real); _.each(arreglo,function(name, i){ %>
      <% if(i===0) { %>
-        <li role="presentation" class="active"><a href="#0" aria-controls="home" role="tab" data-toggle="tab"><%= arreglo[i].nombreEmpresa %></a></li>
+        <li role="presentation" class="active"><a href="#<%= arreglo[i].idExperienciaReal %>" aria-controls="home" role="tab" data-toggle="tab"><%= arreglo[i].nombreEmpresa %></a></li>
      <% }else { %>
-        <li role="presentation"><a href="#1" aria-controls="profile" role="tab" data-toggle="tab"><%= arreglo[i].nombreEmpresa %></a></li>
+        <li role="presentation"><a href="#<%= arreglo[i].idExperienciaReal %>" aria-controls="profile" role="tab" data-toggle="tab"><%= arreglo[i].nombreEmpresa %></a></li>
      <% }%>
      <% }); %>
      
@@ -12,8 +12,11 @@
 </ul>
 <div id="contenidopestaña" class="tab-content">
     <% var arreglo = _.toArray(real); _.each(arreglo,function(name, i){ %>
+    <% var DateIn = new Date(arreglo[i].fechaInicio); %>
+    <% var DateEnd = new Date(arreglo[i].fechaFin); %>
+    <% var meses = parseInt(((arreglo[i].fechaFin - arreglo[i].fechaInicio)/2629750000)); %>
     <% if(i===0) { %>
-    <div role="tabpanel" class="tab-pane active" id="0">
+    <div role="tabpanel" class="tab-pane active" id="<%= arreglo[i].idExperienciaReal %>">
         <div class="panel panel-success">
             <!-- Default panel contents -->
             <div class="panel-heading">Institución: <strong><%= arreglo[i].nombreEmpresa %> </strong><button class="btn btn-default btn-sm" id="editarexperienciareal">Editar </button></div>
@@ -28,22 +31,22 @@
                 </tr>
                 <tr>
                   <td><strong>Duración: </strong></td>
-                  <td>3 Meses</td>
+                  <td><%= meses+" Meses" %></td>
                   <td><strong>Ciudad: </strong></td>
                   <td><%= arreglo[i].ciudad %></td>
                 </tr>
                 <tr>
                   <td><strong>Fecha Inicio: </strong></td>
-                  <td><%= arreglo[i].fechaInicio %></td>
+                  <td><%= DateIn.getDate()+"/"+(DateIn.getMonth()+1)+"/"+DateIn.getFullYear() %></td>
                   <td><strong>Fecha Final: </strong></td>
-                  <td><%= arreglo[i].fechaFin %></td>
+                  <td><%= DateEnd.getDate()+"/"+(DateEnd.getMonth()+1)+"/"+DateEnd.getFullYear()%></td>
                 </tr>
             </table>
             <!--</div>-->
         </div>
     </div>
     <% }else { %>
-    <div role="tabpanel" class="tab-pane" id="1">
+    <div role="tabpanel" class="tab-pane" id="<%= arreglo[i].idExperienciaReal %>">
         <div class="panel panel-success">
             <!-- Default panel contents -->
             <div class="panel-heading">Institución: <strong><%= arreglo[i].nombreEmpresa %> </strong><button class="btn btn-default btn-sm" id="editarexperienciareal">Editar </button></div>
@@ -58,15 +61,15 @@
                 </tr>
                 <tr>
                   <td><strong>Duración: </strong></td>
-                  <td>3 Meses</td>
+                  <td><%= meses+" Meses" %></td>
                   <td><strong>Ciudad: </strong></td>
                   <td><%= arreglo[i].ciudad %></td>
                 </tr>
                 <tr>
                   <td><strong>Fecha Inicio: </strong></td>
-                  <td><%= arreglo[i].fechaInicio %></td>
+                  <td><%= DateIn.getDate()+"/"+(DateIn.getMonth()+1)+"/"+DateIn.getFullYear()%></td>
                   <td><strong>Fecha Final: </strong></td>
-                  <td><%= arreglo[i].fechaFin %></td>
+                  <td><%= DateEnd.getDate()+"/"+(DateEnd.getMonth()+1)+"/"+DateEnd.getFullYear() %></td>
                 </tr>
             </table>
             <!--</div>-->

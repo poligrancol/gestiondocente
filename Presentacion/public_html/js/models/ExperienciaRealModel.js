@@ -6,7 +6,7 @@ define([
 ], function ($, _, Backbone, URLServer) {
 
     var ExperienciaRealModel = Backbone.Model.extend({
-        urlRoot: URLServer+"edu.poli.prap.gd.data.experienciareaL",
+        urlRoot: URLServer+"edu.poli.prap.gd.data.experienciareal",
         idAttribute: 'idExperienciaReal',
         defaults: {
             area: "",
@@ -40,6 +40,10 @@ define([
                 }
                 if(method == 'experienciareal'){
                     options.url = URLServer+"edu.poli.prap.gd.data.experienciareal/prof/"+id;
+                    method="read";
+                }
+                if(method == 'countexperienciareal'){
+                    options.url = URLServer+"edu.poli.prap.gd.data.experienciareal/count";
                     method="read";
                 }
                 var result = Backbone.sync(method, model, _.extend(options, errorHandler));
