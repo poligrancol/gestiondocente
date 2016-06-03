@@ -3,8 +3,9 @@ define([
     'underscore',
     'backbone',
     'text!templates/docente/tarjetaProfesionalListTemplate.html',
-    'text!templates/docente/tarjetaProfesionalEditTemplate.html'
-], function ($, _, Backbone, tarjetaProfesionalListTemplate, tarjetaProfesionalEditTemplate) {
+    'text!templates/docente/tarjetaProfesionalEditTemplate.html',
+    'models/TarjetaProfesionalModel'
+], function ($, _, Backbone, tarjetaProfesionalListTemplate, tarjetaProfesionalEditTemplate, TarjetaProfesionalModel) {
     
   var TarjetaProfesional= Backbone.Model.extend({
             urlRoot: '/models'
@@ -12,15 +13,16 @@ define([
         });
     var TarjetaProfesionalListView = Backbone.View.extend({
         el: $("#tarjetaprof"),
+        model: new TarjetaProfesionalModel(),
         render: function (accion,id) {
             
             id = id || 0
-            if(accion === "ver"){
+            if(accion == "ver"){
                 var data = {};
                 var template = _.template(tarjetaProfesionalListTemplate);
                 var compiledTemplate = template(data);
                 $("#tarjetaprof").html(compiledTemplate);  
-            }else if(accion === "edit"){
+            }else if(accion == "edit"){
                 var data = {};
                 var template = _.template(tarjetaProfesionalEditTemplate);
                 var compiledTemplate = template(data);  
@@ -44,6 +46,7 @@ define([
         }
         ,
         Guardar : function () {
+            model.
             this.render("view");
             var tarjetaProfesional = new TarjetaProfesional();           
             tarjetaProfesional.set({numDocProfesional:"inputNumDoc", lugardeExpedicion:"inputLugarExpedicion", documentoProfesional:"tipoDocumento"});
