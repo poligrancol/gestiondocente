@@ -29,17 +29,9 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(edu.poli.prap.gd.data.service.ArchivosAdjuntosFacadeREST.class);
         resources.add(edu.poli.prap.gd.data.service.CrossOriginResourceSharingFilter.class);
         resources.add(edu.poli.prap.gd.data.service.DepartamentoFacadeREST.class);
-        resources.add(edu.poli.prap.gd.data.service.DetalleExperienciaFacadeREST.class);
-        resources.add(edu.poli.prap.gd.data.service.EscolaridadFacadeREST.class);
-        resources.add(edu.poli.prap.gd.data.service.ExperienciaFacadeREST.class);
-        resources.add(edu.poli.prap.gd.data.service.MateriasFacadeREST.class);
-        resources.add(edu.poli.prap.gd.data.service.PaisFacadeREST.class);
         resources.add(edu.poli.prap.gd.data.service.ProfesorFacadeREST.class);
-        resources.add(edu.poli.prap.gd.data.service.TarjetaProfesionalFacadeREST.class);
-        resources.add(edu.poli.prap.gd.data.service.TituloFacadeREST.class);
     }
 
 }

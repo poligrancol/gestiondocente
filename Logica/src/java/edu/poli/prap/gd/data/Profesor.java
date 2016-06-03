@@ -1,39 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.poli.prap.gd.data;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.math.BigInteger;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author julianolarte
+ * @author DarkKlitos
  */
 @Entity
 @Table(name = "profesor")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Profesor.findAll", query = "SELECT p FROM Profesor p"),
+    @NamedQuery(name = "Profesor.findById", query = "SELECT p FROM Profesor p WHERE p.id = :id"),
     @NamedQuery(name = "Profesor.findByIdProfesor", query = "SELECT p FROM Profesor p WHERE p.idProfesor = :idProfesor"),
     @NamedQuery(name = "Profesor.findByTipoDocumento", query = "SELECT p FROM Profesor p WHERE p.tipoDocumento = :tipoDocumento"),
     @NamedQuery(name = "Profesor.findByNumeroDocumento", query = "SELECT p FROM Profesor p WHERE p.numeroDocumento = :numeroDocumento"),
@@ -42,112 +36,128 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Profesor.findByFechaDeExpedicion", query = "SELECT p FROM Profesor p WHERE p.fechaDeExpedicion = :fechaDeExpedicion"),
     @NamedQuery(name = "Profesor.findByLugarDeExpedicion", query = "SELECT p FROM Profesor p WHERE p.lugarDeExpedicion = :lugarDeExpedicion"),
     @NamedQuery(name = "Profesor.findByRh", query = "SELECT p FROM Profesor p WHERE p.rh = :rh"),
+    @NamedQuery(name = "Profesor.findByIdPaisNacionalidad", query = "SELECT p FROM Profesor p WHERE p.idPaisNacionalidad = :idPaisNacionalidad"),
     @NamedQuery(name = "Profesor.findByGenero", query = "SELECT p FROM Profesor p WHERE p.genero = :genero"),
+    @NamedQuery(name = "Profesor.findByIdPaisLugarNacimiento", query = "SELECT p FROM Profesor p WHERE p.idPaisLugarNacimiento = :idPaisLugarNacimiento"),
     @NamedQuery(name = "Profesor.findByFechaDeNacimiento", query = "SELECT p FROM Profesor p WHERE p.fechaDeNacimiento = :fechaDeNacimiento"),
+    @NamedQuery(name = "Profesor.findByIdPaisDeOrigen", query = "SELECT p FROM Profesor p WHERE p.idPaisDeOrigen = :idPaisDeOrigen"),
     @NamedQuery(name = "Profesor.findByEstadoCivil", query = "SELECT p FROM Profesor p WHERE p.estadoCivil = :estadoCivil"),
+    @NamedQuery(name = "Profesor.findByIdDepartamento", query = "SELECT p FROM Profesor p WHERE p.idDepartamento = :idDepartamento"),
     @NamedQuery(name = "Profesor.findByEmailPersonal", query = "SELECT p FROM Profesor p WHERE p.emailPersonal = :emailPersonal"),
     @NamedQuery(name = "Profesor.findByEmailInstitucional", query = "SELECT p FROM Profesor p WHERE p.emailInstitucional = :emailInstitucional"),
     @NamedQuery(name = "Profesor.findByTelefonoFijo", query = "SELECT p FROM Profesor p WHERE p.telefonoFijo = :telefonoFijo"),
     @NamedQuery(name = "Profesor.findByCelular", query = "SELECT p FROM Profesor p WHERE p.celular = :celular"),
     @NamedQuery(name = "Profesor.findByDireccion", query = "SELECT p FROM Profesor p WHERE p.direccion = :direccion"),
-    @NamedQuery(
-        name = "Profesor.findByParams",
-        query = "SELECT p FROM Profesor p WHERE " +
-                "lower(p.nombre) like :first_name and " +
-                "lower(p.apellido) like :last_name and " +
-                "p.numeroDocumento like :document_number"
-                // TODO: Add `email_institucional` to every row so that this query
-                // returns data, otherwise it'll return an empty list.
-                // "p.numeroDocumento like :document_number and " +
-                // "p.emailInstitucional like :email "
-    )
-})
+    @NamedQuery(name = "Profesor.findByParams", query = " SELECT p" +
+                                                        "   FROM Profesor p" +
+                                                        "  WHERE lower(p.nombre) like :parametro" +
+                                                        "     OR lower(p.apellido) like :parametro" +
+                                                        "     OR lower(p.genero) like :parametro" +
+                                                        "     OR lower(p.estadoCivil) like :parametro" +
+                                                        "     OR lower(p.emailPersonal) like :parametro" +
+                                                        "     OR lower(p.emailInstitucional) like :parametro" +
+                                                        "     OR lower(p.direccion) like :parametro" )})
 public class Profesor implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
     @Basic(optional = false)
     @NotNull
     @Column(name = "id_profesor")
-    private Long idProfesor;
-    @Size(max = 50)
+    private int idProfesor;
+    @Size(max = 2147483647)
     @Column(name = "tipo_documento")
     private String tipoDocumento;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "numero_documento")
-    private String numeroDocumento;
-    @Size(max = 50)
+    private BigInteger numeroDocumento;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 2147483647)
     @Column(name = "nombre")
     private String nombre;
-    @Size(max = 50)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 2147483647)
     @Column(name = "apellido")
     private String apellido;
     @Column(name = "fecha_de_expedicion")
     @Temporal(TemporalType.DATE)
     private Date fechaDeExpedicion;
-    @Size(max = 50)
+    @Size(max = 2147483647)
     @Column(name = "lugar_de_expedicion")
     private String lugarDeExpedicion;
-    @Size(max = 50)
+    @Size(max = 2147483647)
     @Column(name = "rh")
     private String rh;
-    @Size(max = 50)
+    @Column(name = "id_pais_nacionalidad")
+    private Integer idPaisNacionalidad;
+    @Size(max = 2147483647)
     @Column(name = "genero")
     private String genero;
+    @Column(name = "id_pais_lugar_nacimiento")
+    private Integer idPaisLugarNacimiento;
     @Column(name = "fecha_de_nacimiento")
     @Temporal(TemporalType.DATE)
     private Date fechaDeNacimiento;
-    @Size(max = 50)
-    @Column(name = "Estado_Civil")
+    @Column(name = "id_pais_de_origen")
+    private Integer idPaisDeOrigen;
+    @Size(max = 2147483647)
+    @Column(name = "estado_civil")
     private String estadoCivil;
-    @Size(max = 50)
+    @Column(name = "id_departamento")
+    private Integer idDepartamento;
+    @Size(max = 2147483647)
     @Column(name = "email_personal")
     private String emailPersonal;
-    @Size(max = 50)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 2147483647)
     @Column(name = "email_institucional")
     private String emailInstitucional;
-    @Size(max = 50)
+    @Size(max = 2147483647)
     @Column(name = "telefono_fijo")
     private String telefonoFijo;
     @Column(name = "celular")
-    private Long celular;
+    private BigInteger celular;
+    @Size(max = 2147483647)
     @Column(name = "direccion")
     private String direccion;
-    @JoinColumn(name = "id_pais_de_origen", referencedColumnName = "id_pais")
-    @ManyToOne
-    private Pais idPaisDeOrigen;
-    @JoinColumn(name = "id_pais_lugar_nacimiento", referencedColumnName = "id_pais")
-    @ManyToOne
-    private Pais idPaisLugarNacimiento;
-    @JoinColumn(name = "id_pais_nacionalidad", referencedColumnName = "id_pais")
-    @ManyToOne
-    private Pais idPaisNacionalidad;
-    @JoinColumn(name = "id_departamento", referencedColumnName = "id_departamento")
-    @ManyToOne
-    private Departamento idDepartamento;
-    @OneToMany(mappedBy = "idProfesor")
-    private Collection<Titulo> tituloCollection;
-    @OneToMany(mappedBy = "idProfesor")
-    private Collection<DetalleExperiencia> detalleExperienciaCollection;
-    @OneToMany(mappedBy = "idProfesor")
-    private Collection<Experiencia> experienciaCollection;
-    @OneToMany(mappedBy = "idProfesor")
-    private Collection<ArchivosAdjuntos> archivosAdjuntosCollection;
-    @OneToMany(mappedBy = "idProfesor")
-    private Collection<Escolaridad> escolaridadCollection;
-    @OneToMany(mappedBy = "idProfesor")
-    private Collection<TarjetaProfesional> tarjetaProfesionalCollection;
 
     public Profesor() {
     }
 
-    public Profesor(Long idProfesor) {
-        this.idProfesor = idProfesor;
+    public Profesor(Integer id) {
+        this.id = id;
     }
 
-    public Long getIdProfesor() {
+    public Profesor(Integer id, int idProfesor, BigInteger numeroDocumento, String nombre, String apellido, String emailInstitucional) {
+        this.id = id;
+        this.idProfesor = idProfesor;
+        this.numeroDocumento = numeroDocumento;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.emailInstitucional = emailInstitucional;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public int getIdProfesor() {
         return idProfesor;
     }
 
-    public void setIdProfesor(Long idProfesor) {
+    public void setIdProfesor(int idProfesor) {
         this.idProfesor = idProfesor;
     }
 
@@ -159,11 +169,11 @@ public class Profesor implements Serializable {
         this.tipoDocumento = tipoDocumento;
     }
 
-    public String getNumeroDocumento() {
+    public BigInteger getNumeroDocumento() {
         return numeroDocumento;
     }
 
-    public void setNumeroDocumento(String numeroDocumento) {
+    public void setNumeroDocumento(BigInteger numeroDocumento) {
         this.numeroDocumento = numeroDocumento;
     }
 
@@ -207,12 +217,28 @@ public class Profesor implements Serializable {
         this.rh = rh;
     }
 
+    public Integer getIdPaisNacionalidad() {
+        return idPaisNacionalidad;
+    }
+
+    public void setIdPaisNacionalidad(Integer idPaisNacionalidad) {
+        this.idPaisNacionalidad = idPaisNacionalidad;
+    }
+
     public String getGenero() {
         return genero;
     }
 
     public void setGenero(String genero) {
         this.genero = genero;
+    }
+
+    public Integer getIdPaisLugarNacimiento() {
+        return idPaisLugarNacimiento;
+    }
+
+    public void setIdPaisLugarNacimiento(Integer idPaisLugarNacimiento) {
+        this.idPaisLugarNacimiento = idPaisLugarNacimiento;
     }
 
     public Date getFechaDeNacimiento() {
@@ -223,12 +249,28 @@ public class Profesor implements Serializable {
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
 
+    public Integer getIdPaisDeOrigen() {
+        return idPaisDeOrigen;
+    }
+
+    public void setIdPaisDeOrigen(Integer idPaisDeOrigen) {
+        this.idPaisDeOrigen = idPaisDeOrigen;
+    }
+
     public String getEstadoCivil() {
         return estadoCivil;
     }
 
     public void setEstadoCivil(String estadoCivil) {
         this.estadoCivil = estadoCivil;
+    }
+
+    public Integer getIdDepartamento() {
+        return idDepartamento;
+    }
+
+    public void setIdDepartamento(Integer idDepartamento) {
+        this.idDepartamento = idDepartamento;
     }
 
     public String getEmailPersonal() {
@@ -255,11 +297,11 @@ public class Profesor implements Serializable {
         this.telefonoFijo = telefonoFijo;
     }
 
-    public Long getCelular() {
+    public BigInteger getCelular() {
         return celular;
     }
 
-    public void setCelular(Long celular) {
+    public void setCelular(BigInteger celular) {
         this.celular = celular;
     }
 
@@ -271,96 +313,10 @@ public class Profesor implements Serializable {
         this.direccion = direccion;
     }
 
-    public Pais getIdPaisDeOrigen() {
-        return idPaisDeOrigen;
-    }
-
-    public void setIdPaisDeOrigen(Pais idPaisDeOrigen) {
-        this.idPaisDeOrigen = idPaisDeOrigen;
-    }
-
-    public Pais getIdPaisLugarNacimiento() {
-        return idPaisLugarNacimiento;
-    }
-
-    public void setIdPaisLugarNacimiento(Pais idPaisLugarNacimiento) {
-        this.idPaisLugarNacimiento = idPaisLugarNacimiento;
-    }
-
-    public Pais getIdPaisNacionalidad() {
-        return idPaisNacionalidad;
-    }
-
-    public void setIdPaisNacionalidad(Pais idPaisNacionalidad) {
-        this.idPaisNacionalidad = idPaisNacionalidad;
-    }
-
-    public Departamento getIdDepartamento() {
-        return idDepartamento;
-    }
-
-    public void setIdDepartamento(Departamento idDepartamento) {
-        this.idDepartamento = idDepartamento;
-    }
-
-    @XmlTransient
-    public Collection<Titulo> getTituloCollection() {
-        return tituloCollection;
-    }
-
-    public void setTituloCollection(Collection<Titulo> tituloCollection) {
-        this.tituloCollection = tituloCollection;
-    }
-
-    @XmlTransient
-    public Collection<DetalleExperiencia> getDetalleExperienciaCollection() {
-        return detalleExperienciaCollection;
-    }
-
-    public void setDetalleExperienciaCollection(Collection<DetalleExperiencia> detalleExperienciaCollection) {
-        this.detalleExperienciaCollection = detalleExperienciaCollection;
-    }
-
-    @XmlTransient
-    public Collection<Experiencia> getExperienciaCollection() {
-        return experienciaCollection;
-    }
-
-    public void setExperienciaCollection(Collection<Experiencia> experienciaCollection) {
-        this.experienciaCollection = experienciaCollection;
-    }
-
-    @XmlTransient
-    public Collection<ArchivosAdjuntos> getArchivosAdjuntosCollection() {
-        return archivosAdjuntosCollection;
-    }
-
-    public void setArchivosAdjuntosCollection(Collection<ArchivosAdjuntos> archivosAdjuntosCollection) {
-        this.archivosAdjuntosCollection = archivosAdjuntosCollection;
-    }
-
-    @XmlTransient
-    public Collection<Escolaridad> getEscolaridadCollection() {
-        return escolaridadCollection;
-    }
-
-    public void setEscolaridadCollection(Collection<Escolaridad> escolaridadCollection) {
-        this.escolaridadCollection = escolaridadCollection;
-    }
-
-    @XmlTransient
-    public Collection<TarjetaProfesional> getTarjetaProfesionalCollection() {
-        return tarjetaProfesionalCollection;
-    }
-
-    public void setTarjetaProfesionalCollection(Collection<TarjetaProfesional> tarjetaProfesionalCollection) {
-        this.tarjetaProfesionalCollection = tarjetaProfesionalCollection;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idProfesor != null ? idProfesor.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -371,7 +327,7 @@ public class Profesor implements Serializable {
             return false;
         }
         Profesor other = (Profesor) object;
-        if ((this.idProfesor == null && other.idProfesor != null) || (this.idProfesor != null && !this.idProfesor.equals(other.idProfesor))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -379,7 +335,7 @@ public class Profesor implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.poli.prap.gd.data.Profesor[ idProfesor=" + idProfesor + " ]";
+        return "edu.poli.prap.gd.data.Profesor[ id=" + id + " ]";
     }
-
+    
 }

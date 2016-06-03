@@ -311,3 +311,10 @@ th, td{
 .text-muted{
     color:#777;
 }
+
+#footer{
+    background-color: rgb(245, 245, 245);
+}
+#lbl-busc{
+    color: rgb(149, 149, 149);
+}
