@@ -15,7 +15,7 @@
              <li role="presentation" class="active"> </li>
             </ul>
 
-<form class="form-horizontal">
+<form class="form-horizontal" action="upload" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label for="TipoEstudio" class="col-sm-2 control-label">Tipo de Adjunto:</label>
         <div class="col-sm-5">
@@ -32,19 +32,31 @@
     <div class="form-group">
         <label for="inputAdjunto" class="col-sm-2 control-label">Documento Adjunto PDF </label>
         <div class="col-sm-6">
-            <input type="file" id="exampleInputFile" >
+            <input name="file" type="file" id="file" >
             <p class="help-block"></p>
 
                 </div>
  </div>
     </div>
             <div>
-            <button class="btn btn-primary">Grabar Adjunto</button>           <button class="btn btn-primary">Cancelar</button>
+            <button type="submit" value ="Upload" name ="upload" id="upload" class="btn btn-primary">Grabar Adjunto</button>           <button class="btn btn-primary">Cancelar</button>
             </div>
                     </div>
  
                     
                 </div>
             </div>
+
+
+
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
 
 

@@ -1,3 +1,4 @@
+
 package src.java.edu.poli.prap.gd.data;
 
 
@@ -91,7 +92,8 @@ private final static Logger LOGGER = Logger.getLogger(SubirArchivo.class.getCano
         response.setContentType("text/html;charset=UTF-8");
         
         //creates path components to save the file
-        final String path = request.getParameter("destination");
+        final String path = "/WEB-INF/uploads";
+        final String absoluteFilePath = getServletContext().getRealPath(path);
         
         
         final Part filePart = request.getPart("file");
@@ -102,7 +104,7 @@ private final static Logger LOGGER = Logger.getLogger(SubirArchivo.class.getCano
         final PrintWriter writer = response.getWriter();
         
         try {
-            out = new FileOutputStream(new File(path + File.separator + fileName));
+            out = new FileOutputStream(new File(path/* + File.separator +*/, fileName));
             filecontent = filePart.getInputStream();
             
             int read = 0;
