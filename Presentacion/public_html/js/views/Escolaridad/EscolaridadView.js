@@ -61,37 +61,43 @@ function ($, _, Backbone, EscolaridadModel, EscolaridadCollection, ListarEscolar
             console.log('cargar editar datos');
             this.cargarEditar();
         },
+        
         adjuntarDiploma : function(){
             console.log('adjuntar diploma');
             this.cargarAdjuntarDip();
         },
+        
         nuevaEscolaridad : function(){
             console.log('cargar nueva escolaridad');
             this.cargarNuevaEsco();
         },
         
+        guardarEscolaridad: function(){
+          
+            var nEscolaridad = new EscolaridadModel();
+            nEscolaridad.set({
+            titulo: $('#titulo').val(),
+            institucion: $('#institucion').val(),
+            nivel: $('#nivel').val(),      
+            facultad: $('#facultad').val(),
+            anos: $('#anos').val(),
+            fechaDeInicio: $('#fechaDeInicio').val(),
+            fechaGrado: $('#fechaGrado').val(),
+            convalidado: $('#convalidado').val(),
+            estadoEstudio: $('#estadoEstudio').val()});
+      
+            nEscolaridad.save();
+        },        
+        
         
         events: {
             "click #dbeditarEcolaridad": "editarEscolaridad",
             "click #dbnuevaEscolaridad": "adjuntarDiploma",
-            "click #adjuntarDiploma": "nuevaEscolaridad"
-        },
-        
-        guardarEscolaridad: function(){
+            "click #botAdjuntarDiploma": "nuevaEscolaridad",
             
-            var escolaridad = new EscolaridadModel;
-            escolaridad.set(("titulo").value,
-            ("institucion").value,
-            ("nivel").value,      
-            ("facultad").value,
-            ("anos").value,
-            ("fechaDeInicio").value,
-            ("fechaGrado").value,
-            ("convalidado").value,
-            ("estadoEstudio").value);
-            escolaridad.sync();
-                
+            "click #botGuardEsco": "guardarEscolaridad"
         }
+               
         
     });
     return EscolaridadView;

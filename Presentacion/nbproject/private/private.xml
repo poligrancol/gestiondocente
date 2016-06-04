@@ -3,7 +3,31 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/js/collections/ArchivosAdjuntosCollection.js</file>
+            <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/templates/Escolaridad/AdjuntarDiplomaTemplate.html</file>
+            <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/js/libs/require/require.js</file>
+            <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/js/models/TarjetaProfesionalModel.js</file>
+            <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/js/collections/DepartamentosCollection.js</file>
+            <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/templates/docente/tarjetaPorfesionalEditTemplate.html</file>
+            <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/js/conf/URLServer.html</file>
+            <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/js/views/TarjetaProf/TarjetaProfView.js</file>
+            <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/js/models/EscolaridadModel.js</file>
+            <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/js/modules/docente/router_old.js</file>
             <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/js/views/Escolaridad/EscolaridadView.js</file>
+            <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/js/views/docente/TarjetaProfesionalListView.js</file>
+            <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/js/modules/docente/app.js</file>
+            <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/templates/docente/tarjetaProfesionalListTemplate.html</file>
+            <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/js/views/auth/authRegisterView.js</file>
+            <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/js/text.js</file>
+            <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/js/views/ExperienciaLab/CrearExperienciaLabView.js</file>
+            <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/js/modules/docente/text.js</file>
+            <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/templates/Escolaridad/NuevaEscolaridadTemplate.html</file>
+            <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/js/collections/DetalleExperienciaCollection.js</file>
+            <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/js/views/Adjuntos/CrearAdjuntosView.js</file>
+            <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/js/models/ProfesorModel.js</file>
+            <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/js/collections/MateriaCollection.js</file>
+            <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/js/collections/EscolaridadCollection.js</file>
+            <file>file:/C:/Users/Giovanni/Documents/GitHub/gestiondocente/Presentacion/public_html/js/libs/backbone/backbone-min.js</file>
         </group>
     </open-files>
 </project-private>

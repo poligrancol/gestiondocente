@@ -6,7 +6,10 @@ define([
 ], function ($, _, Backbone, URLServer) {
 
     var EscolaridadModel = Backbone.Model.extend({
-        urlRoot: URLServer,
+        //urlRoot: URLServer,
+         urlRoot: "http://localhost:8080/Logica/webresources/edu.poli.prap.gd.data.escolaridad/",
+        //urlRoot: '/edu.poli.prap.gd.data.escolaridad',
+        
         idAttribute: 'codigoEscolaridad',
         defaults: {
             titulo: "",
@@ -36,10 +39,12 @@ define([
                     // Otherwise the JS client has to be copied into the
                     // some (f.e. the same) Web project on the same domain
                     console.log('Unable to fulfil the request');
-                }}
+                }};
             
             if (method == 'create') {
-                options.url = URLServer;
+                //options.url = URLServer;
+                //options.url = '/edu.poli.prap.gd.data.escolaridad';
+                options.url = "http://localhost:8080/Logica/webresources/edu.poli.prap.gd.data.escolaridad/";
             }
             var result = Backbone.sync(method, model, _.extend(options, errorHandler));
             return result;
@@ -49,4 +54,3 @@ define([
 
     return EscolaridadModel;
  });
-   

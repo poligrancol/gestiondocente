@@ -9,6 +9,9 @@ define([
     var EscolaridadCollection = Backbone.Collection.extend({
         model: EscolaridadModel,
         url: URLServer,
+        url: "http://localhost:8080/Logica/webresources/edu.poli.prap.gd.data.escolaridad/",
+        //url: '/edu.poli.prap.gd.data.escolaridad',
+   
         sync: function (method, model, options) {
             options || (options = {});
             var errorHandler = {
