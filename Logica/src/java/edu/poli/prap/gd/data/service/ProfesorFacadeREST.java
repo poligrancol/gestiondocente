@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.poli.prap.gd.data.service;
 
 import edu.poli.prap.gd.data.Profesor;
@@ -10,8 +6,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.ws.rs.DefaultValue;
-import javax.ws.rs.QueryParam;
+import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -20,6 +15,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 /**
  *
@@ -27,8 +23,10 @@ import javax.ws.rs.Produces;
  */
 @Stateless
 @Path("profesor")
-@Produces({"application/xml", "application/json"})
+@Produces(MediaType.APPLICATION_JSON + ";charset=UTF-8")
+@Consumes(MediaType.APPLICATION_JSON)
 public class ProfesorFacadeREST extends AbstractFacade<Profesor> {
+
     @PersistenceContext(unitName = "LogicaPU")
     private EntityManager em;
 
@@ -38,14 +36,12 @@ public class ProfesorFacadeREST extends AbstractFacade<Profesor> {
 
     @POST
     @Override
-    @Consumes({"application/xml", "application/json"})
     public void create(Profesor entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
-    @Consumes({"application/xml", "application/json"})
     public void edit(@PathParam("id") Long id, Profesor entity) {
         super.edit(entity);
     }
@@ -80,20 +76,40 @@ public class ProfesorFacadeREST extends AbstractFacade<Profesor> {
      * @return Procesor list
      */
     @GET
-    @Path("buscar")
-    public List<Profesor> search(
-        @DefaultValue("") @QueryParam("first_name") String first_name,
-        @DefaultValue("") @QueryParam("last_name") String last_name,
-        @DefaultValue("") @QueryParam("document_number") String document_number,
-        @DefaultValue("") @QueryParam("email") String email
+    @Path("buscar/{parametro}")
+    public List<Profesor> search(@PathParam("parametro") String param
     ) {
-        // Returns a list of teacher filterd by GET parameters.
-        return em.createNamedQuery("Profesor.findByParams")
-            .setParameter("first_name", "%" + first_name + "%")
-            .setParameter("last_name", "%" + last_name + "%")
-            .setParameter("document_number", "%" + document_number + "%")
-            // .setParameter("email", "%" + email + "%")
-            .getResultList();
+        Query query = null;
+        if (!param.equals("vacio")) {
+
+            try {
+                long parametro = Long.parseLong(param);
+
+                query = em.createQuery(" SELECT p"
+                        + "   FROM Profesor p"
+                        + "  WHERE (p.celular) = :celular"
+                        + "     OR (p.numeroDocumento) = :numeroDocumento"
+                        + "     OR (p.telefonoFijo) = :telefonoFijo").setParameter("celular", parametro)
+                        .setParameter("numeroDocumento", parametro).setParameter("telefonoFijo", parametro);
+            } catch (Exception e) {
+                query = em.createQuery(" SELECT p"
+                        + "   FROM Profesor p"
+                        + "  WHERE UPPER(p.nombre) like :nombre"
+                        + "     OR UPPER(p.apellido) like :apellido"
+                        + "     OR UPPER(p.genero) like :genero"
+                        + "     OR UPPER(p.estadoCivil) like :estado"
+                        + "     OR UPPER(p.emailPersonal) like :emailp"
+                        + "     OR UPPER(p.emailInstitucional) like :emaili"
+                        + "     OR UPPER(p.direccion) like :direccion").setParameter("nombre", "%" + param.toUpperCase() + "%")
+                        .setParameter("apellido", "%" + param.toUpperCase() + "%").setParameter("genero", "%" + param.toUpperCase() + "%")
+                        .setParameter("estado", "%" + param.toUpperCase() + "%").setParameter("emailp", "%" + param.toUpperCase() + "%")
+                        .setParameter("emaili", "%" + param.toUpperCase() + "%").setParameter("direccion", "%" + param.toUpperCase() + "%");
+            }
+        } else {
+            return super.findAll();
+        }
+        List<Profesor> lista = query.getResultList();
+        return lista;
     }
 
     @GET
@@ -104,7 +120,6 @@ public class ProfesorFacadeREST extends AbstractFacade<Profesor> {
 
     @GET
     @Path("count")
-    @Produces("text/plain")
     public String countREST() {
         return String.valueOf(super.count());
     }

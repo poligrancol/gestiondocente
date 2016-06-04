@@ -2,46 +2,84 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'text!templates/ListarDocente/ListarDocenteViewTemplate.html'
-], function($, _, Backbone, ListarDocenteViewTemplate) {
+    '../../text!../../../../templates/ListarDocente/ListarDocenteViewTemplate.html',
+    'collections/ProfesorCollection'
 
-    var Profesor = Backbone.Model.extend({
-        urlRoot: '/models'
+], function($, _, Backbone, ListarDocenteViewTemplate, ProfesorCollection) {
 
-    });
     var ListarDocenteView = Backbone.View.extend({
-        el: $("#table-user"),
-        render: function() {
-                var data = {};
-                var template = _.template(ListarDocenteViewTemplate);
-                var compiledTemplate = template(data);
-                $("#table-user").html(compiledTemplate);
-        },
-
-
+        el: '#intro',
         events: {
-            "click #editarTrajetaProfesional": "Editar",
-            "click #guardarCambios": "Guardar",
-            "click #agregarTarjeta": "Agregar"
+            'click .buscar-pr': 'filtroNombre'
+                //   'click #btn-guardar': 'guardar'
         },
-
-        Editar: function() {
-            console.log("entro a la funcion Editar...");
-            this.render("edit");
+        render: function() {
+            var that = this;
+            var profesores = new ProfesorCollection();
+            profesores.traerPagina(1, 4);
+            profesores.fetch({
+                success: function(profesores) {
+                    var template = _.template(ListarDocenteViewTemplate, {
+                        datas: profesores.models
+                    });
+                    // var compiledTemplate = template(data);
+                    $("#intro").html(template);
+                    $('#listar-docente-table').DataTable();
+                }
+            })
         },
-        Guardar: function() {
-            this.render("view");
-            var tarjetaProfesional = new TarjetaProfesional();
-            tarjetaProfesional.set({ numDocProfesional: "inputNumDoc", lugardeExpedicion: "inputLugarExpedicion", documentoProfesional: "tipoDocumento" });
-            tarjetaProfesional.save({
-                succes: function(tarjetaProfrsional) {
-                    console.log(tarjetaProfrsional)
+        // guardar:function(){
+        // console.log('Prueba');
+        // },
+        filtroNombre: function() {
+            var ProfeModelo = Backbone.Model.extend({
+                urlRoot: 'http://localhost:8080/Logica/webresources/profesor/buscar/',
+                idAttribute: 'id',
+                defaults: {
+                    id: ""
                 }
             });
-        },
-        Agregar: function() {
+            var ProfesorFiltrado = Backbone.Collection.extend({
+                model: ProfeModelo,
+                url:'http://localhost:8080/Logica/webresources/profesor/buscar',
+                filrarProfe: function (param) {
+                                  this.url += '/' + param;
+                             }
+            });
 
-            console.log("entro a la funcion Agregar...");
+
+            var depto = $('#inp-busc').val();
+            $('#intro').html('');
+            if (depto != '') {
+                console.log('Ingreso: ' + depto);
+                var profes = new ProfesorFiltrado()
+                profes.filrarProfe(depto)
+                profes.fetch({
+                        success: function(profes) {
+                            var template = _.template(ListarDocenteViewTemplate, {
+                                datas: profes.models
+                            });
+                            // var compiledTemplate = template(data);
+                            $("#intro").html(template);
+                            $('#listar-docente-table').DataTable();
+                        }
+                    });
+                    // }
+            }else{
+            console.log('Ingreso: Parametro null');
+                var profes = new ProfesorFiltrado()
+                profes.filrarProfe('vacio')
+                profes.fetch({
+                        success: function(profes) {
+                            var template = _.template(ListarDocenteViewTemplate, {
+                                datas: profes.models
+                            });
+                            // var compiledTemplate = template(data);
+                            $("#intro").html(template);
+                            $('#listar-docente-table').DataTable();
+                        }
+                    });
+            }
         }
     });
     return ListarDocenteView;

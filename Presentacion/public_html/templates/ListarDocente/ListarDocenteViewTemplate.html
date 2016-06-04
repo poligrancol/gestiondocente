@@ -1,87 +1,101 @@
 <div class="container">
+
     <div class="row">
-        <div class="col-sm-12">
+        <!--Panel Buscar-->
+        <div class="col-md-3">
             <div class="panel panel-primary">
+                <div class="panel-heading text-center">
+                    <h3 class="text-center">Buscar</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-1">
+
+                        </div>
+                        <div class="col-md-10">
+                            <label for="inp-busc" id="lbl-busc">Parametro de Busqueda</label>
+                            <input class="col-lg-12" type="text" id="inp-busc" placeholder="Ingrese un parametro" />
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer" id="footer">
+                    <div class="row">
+                        <div class="col-md-4">
+
+                        </div>
+                        <div class="center-block">
+                            <button id="buscar-pr" class="btn btn-primary btn-lg buscar-pr">Buscar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Panel Buscar-->
+
+        <!--Panel Tabla Lista Profesores-->
+        <div class="col-md-9">
+            <div id="table-profe" class="panel panel-primary">
                 <!-- Default panel contents -->
                 <div class="panel-heading text-center">
                     <h3 class="text-center">Listado de Docentes</h3>
                 </div>
                 <!-- Table -->
-                <table id="listar-docente-table" class="display table" cellspacing="0" width="100%">
+                <table id="listar-docente-table" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th>
                                 <strong>No.</strong>
-                                <span class="glyphicon glyphicon-chevron-down btn-sm text-center" aria-hidden="true"></span>
+
                             </th>
                             <th>
-                                <strong>Id Identidad</strong> <span class="glyphicon glyphicon-sort text-center" aria-hidden="true"></span>
+                                <strong>Id Identidad</strong>
                             </th>
                             <th>
-                                <strong>Nombres </strong><span class="glyphicon glyphicon-sort text-center" aria-hidden="true"></span>
+                                <strong>Nombres </strong>
                             </th>
                             <th>
-                                <strong>Apellidos </strong><span class="glyphicon glyphicon-sort text-center" aria-hidden="true"></span>
+                                <strong>Apellidos </strong>
                             </th>
                             <th>
-                                <strong>Correos </strong><span class="glyphicon glyphicon-sort text-center" aria-hidden="true"> </span>
+                                <strong>Correos </strong>
                             </th>
                             <th>
-                                <strong>Teléfonos </strong><span class="glyphicon glyphicon-sort text-center" aria-hidden="true"></span>
-                            </th>
-                            <th>
-                                <strong>Editar</strong>
-                                <span class="glyphicon glyphicon-edit btn-sm text-center" aria-hidden="true"></span>
+                                <strong>Teléfonos </strong>
                             </th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th><strong>No.</strong>
-                                <span class="glyphicon glyphicon-chevron-up btn-sm text-center" aria-hidden="true"></span>
-                            </th>
-                            <th><strong>Id Identidad</strong>
-                            </th>
-                            <th><strong>Nombres</strong>
-                            </th>
-                            <th><strong>Apellidos</strong>
-                            </th>
-                            <th><strong>Correos</strong>
-                            </th>
-                            <th><strong>Teléfonos</strong>
-                            </th>
-                            <th><strong>Editar</strong>
-                                <span class="glyphicon glyphicon-edit btn-sm text-center" aria-hidden="true"></span>
-                            </th>
-                        </tr>
-                    </tfoot>
-                    <tbody class="searchable">
-                        <tr>
-                            <td>2</td>
-                            <td>10278723987</td>
-                            <td>Andres Felipe</td>
-                            <td>Roa Pascuas</td>
-                            <td>afsilvap@poligran.edu.co</td>
-                            <td>31567845355</td>
-                            <td>
-                                <button type="button" class="btn btn-default btn-xs">Editar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>10278723987</td>
-                            <td>Andres Felipe</td>
-                            <td>Silva Pascuas</td>
-                            <td>afsilvap@poligran.edu.co</td>
-                            <td>3156784532</td>
-                            <td>
-                                <button type="button" class="btn btn-default btn-xs">Editar</button>
-                            </td>
-                        </tr>
+                    <tbody>
+                        <% _.each(datas, function(data, i) { %>
+                            <tr>
+                                <td>
+                                    <%= i + 1 %>
+                                </td>
+                                <td>
+                                    <%= data.get('numeroDocumento') %>
+                                </td>
+                                <td>
+                                    <%= data.get('nombre') %>
+                                </td>
+                                <td>
+                                    <%= data.get('apellido') %>
+                                </td>
+                                <td>
+                                    <%= data.get('emailInstitucional') %>,
+                                        <br />
+                                        <%= data.get('emailPersonal') %>
+                                </td>
+                                <td>Movil:
+                                    <%= data.get('celular') %>,
+                                        <br /> Fijo:
+                                        <%= data.get('telefonoFijo') %>
+                                </td>
+                            </tr>
+                            <% }); %>
                     </tbody>
                 </table>
                 <!-- End Table -->
             </div>
         </div>
+        <!--Panel Tabla Lista Profesores-->
     </div>
 </div>

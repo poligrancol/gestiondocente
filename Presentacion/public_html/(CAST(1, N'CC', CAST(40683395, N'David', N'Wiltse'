@@ -1,0 +1,43 @@
+(CAST(1, N'CC', CAST(40683395, N'David', N'Wiltse', CAST(0x850A0B00 AS Date), N'Bogota D.C.', N'A+', CAST(1, N'Hombre', CAST(1, CAST(0x6ED60A00 AS Date), CAST(1, N'Casado', CAST(25, N'DavidSWiltse@armyspy.com', N'dawiltse@poligran.edu.co', N'7584169', CAST(3159387633, N'Av. Carrera 45 N 108-27')
+(CAST(2, N'CC', CAST(103628969, N'Amy', N'Martinez', CAST(0xEC240B00 AS Date), N'Bogota D.C. ', N'O', CAST(1, N'Mujer', CAST(1, CAST(0xFB070B00 AS Date), CAST(1, N'Soltera', CAST(25, N'AmyMMartinez@dayrep.com', N'ammartinez@poligran.edu.co', N'9841773', CAST(9331586422, N'Calle Santo del Sane No. 461')
+(CAST(3, N'CC', CAST(1032453788, N'Diego', N'Rodriguez', CAST(0x04290B00 AS Date), N'Bogota D.C.', N'A-', CAST(1, N'Hombre', CAST(1, CAST(0x9E190B00 AS Date), CAST(1, N'Soltero', CAST(25, N'bnedmundob13@yopmail.com', N'dirodriguez@poligran.edu.co', N'2334315', CAST(3152334315, N'Avenida Chiapas No. 555')
+(CAST(4, N'CC', CAST(56752025, N'Clara', N'Alvarez', CAST(0x661A0B00 AS Date), N'Bogota D.C.', N'A+', CAST(1, N'Mujer', CAST(1, CAST(0xA2010B00 AS Date), CAST(1, N'Casada', CAST(25, N'ghiftode7@yopmail.com', N'clalverez@poligran.edu.co', N'4552570', CAST(3154552570, N'Bulevar Renilla No. 693')
+(CAST(5, N'CC', CAST(104488309, N'Noel', N'Sequedo', CAST(0x9A220B00 AS Date), N'Bogota D.C.', N'AB', CAST(1, N'Hombre', CAST(1, CAST(0x6E090B00 AS Date), CAST(1, N'Soltero', CAST(25, N'gmnoeli12@yopmail.com', N'nosequedo@poligran.edu.co', N'0997645', CAST(3150997645, N'Avenida Baleares No. 870')
+/****** Object:  Table [dbo].[tarjeta_profesional]    Script Date: 11/11/2015 19:29:42 ******/
+
+
+
+
+'5', 'Antioquia'
+'8', 'Atlantico'
+'11', 'BogotaDC'
+'13', 'Bolivar'
+'15', 'Boyaca'
+'17', 'Caldas'
+'18', 'Caqueta'
+'19', 'Cauca'
+'20', 'Cesar'
+'23', 'Cordoba'
+'25', 'Cundinamarca'
+'27', 'Choco'
+'41', 'Huila'
+'44', 'La_Guajira'
+'47', 'Magdalena'
+'50', 'Meta'
+'52', 'Narino'
+'54', 'Norte_de_Santander'
+'63', 'Quindio'
+'66', 'Risaralda'
+'68', 'Santander'
+'70', 'Sucre'
+'73', 'Tolima'
+'76', 'Valle_del_Cauca'
+'81', 'Arauca'
+'85', 'Casanare'
+'86', 'Putumayo'
+'88', 'San_Andres'
+'91', 'Amazonas'
+'94', 'Guainia'
+'95', 'Guaviare'
+'97', 'Vaupes'
+'99', 'Vichada'
