@@ -68,12 +68,14 @@ public class ProfesorFacadeREST extends AbstractFacade<Profesor> {
         return super.findAll();
     }
 
-    /**
+    /*
      * Find a list of teachers given certain parameters.
      *
      * <code>
-     *
-     *      /profesor/buscar?first_name=John&last_name=Doe&document_number=576944&gender=masculino
+     *      // Get teachers that have `John` on any of their fields
+     *      // and of all those records get page two, that is, records
+     *      // from the 11th to the 20th.
+     *      /profesor/buscar?param=John&page=2
      *
      * </code>
      *
@@ -81,19 +83,63 @@ public class ProfesorFacadeREST extends AbstractFacade<Profesor> {
      */
     @GET
     @Path("buscar")
+    @GET
+    @Path("buscar/{parametro}")
     public List<Profesor> search(
-        @DefaultValue("") @QueryParam("first_name") String first_name,
-        @DefaultValue("") @QueryParam("last_name") String last_name,
-        @DefaultValue("") @QueryParam("document_number") String document_number,
-        @DefaultValue("") @QueryParam("email") String email
+        @PathParam("parametro") String param,
+        @DefaultValue("1") @PathParam("page") String page
     ) {
-        // Returns a list of teacher filterd by GET parameters.
-        return em.createNamedQuery("Profesor.findByParams")
-            .setParameter("first_name", "%" + first_name + "%")
-            .setParameter("last_name", "%" + last_name + "%")
-            .setParameter("document_number", "%" + document_number + "%")
-            // .setParameter("email", "%" + email + "%")
+        // Number of items on each page.
+        int itemsPerPage = 10;
+
+        // Calculate the initial record for each page.
+        // Page 2: starts on item 11 and ends at 20.
+        // Page 3: starts on item 21 and ends at 30.
+        int initialItem = ((Integer.parseInt(page) - 1) * 10) + 1;
+
+        // Filter items.
+        Query query = null;
+        if (!param.equals("vacio")) {
+            try {
+                long parametro = Long.parseLong(param);
+
+                query = em.createQuery(" SELECT p"
+                        + "   FROM Profesor p"
+                        + "  WHERE (p.celular) = :celular"
+                        + "     OR (p.numeroDocumento) = :numeroDocumento"
+                        + "     OR (p.telefonoFijo) = :telefonoFijo").setParameter("celular", parametro)
+                        .setParameter("numeroDocumento", parametro).setParameter("telefonoFijo", parametro);
+            } catch (Exception e) {
+                query = em.createQuery(" SELECT p"
+                        + "   FROM Profesor p"
+                        + "  WHERE UPPER(p.nombre) like :nombre"
+                        + "     OR UPPER(p.apellido) like :apellido"
+                        + "     OR UPPER(p.genero) like :genero"
+                        + "     OR UPPER(p.estadoCivil) like :estado"
+                        + "     OR UPPER(p.emailPersonal) like :emailp"
+                        + "     OR UPPER(p.emailInstitucional) like :emaili"
+                        + "     OR UPPER(p.direccion) like :direccion").setParameter("nombre", "%" + param.toUpperCase() + "%")
+                        .setParameter("apellido", "%" + param.toUpperCase() + "%").setParameter("genero", "%" + param.toUpperCase() + "%")
+                        .setParameter("estado", "%" + param.toUpperCase() + "%").setParameter("emailp", "%" + param.toUpperCase() + "%")
+                        .setParameter("emaili", "%" + param.toUpperCase() + "%").setParameter("direccion", "%" + param.toUpperCase() + "%");
+            }
+        } else {
+            return super.findAll();
+        }
+
+        // Get paged filtered list.
+        List<Profesor> lista = query
+
+            // Offset where we start getting reccords from.
+            .setFirstResult(initialItem)
+
+            // Max number of items per page.
+            .setMaxResults(itemsPerPage)
+
+            // Get results.
             .getResultList();
+        return lista;
+
     }
 
     @GET
