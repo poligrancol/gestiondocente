@@ -24,15 +24,16 @@ import javax.servlet.http.Part;
  *
  * @author alejo
  */
-@WebServlet(name = "SubirArchivo", urlPatterns = {"/upload"})
-@MultipartConfig
+
+@WebServlet(name = "SubirArchivo", urlPatterns = {"/upload"}) // este tag maneja los nombre y el url pattern
+@MultipartConfig //Configuraciones del archivo
 public class SubirArchivo extends HttpServlet {
 private File uploadFolder;
 private final static Logger LOGGER = Logger.getLogger(SubirArchivo.class.getCanonicalName());
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       processRequest(req,resp);
+       processRequest(req,resp); //metodo en el cual se hace el proceso de verificacion, creacio y subida del archivo.
     }
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -92,31 +93,31 @@ private final static Logger LOGGER = Logger.getLogger(SubirArchivo.class.getCano
         response.setContentType("text/html;charset=UTF-8");
         
         //creates path components to save the file
-        final String path = "/WEB-INF/uploads";
-        final String absoluteFilePath = getServletContext().getRealPath(path);
+        final String path = "/WEB-INF/uploads";//La direccion de la carpeta donde se van alojar los archivos
+        final String absoluteFilePath = getServletContext().getRealPath(path);//Direccion real para que el servlet funcione.
+       
         
-        
-        final Part filePart = request.getPart("file");
-        final String fileName = getFileName(filePart);
+        final Part filePart = request.getPart("file");//Obtiene la parte(archivo) desde su nombre;
+        final String fileName = getFileName(filePart); //Obtiene el nombrea llamando el metodo getFileName utilizando la parte traida anteriormente.
         
         OutputStream out = null;
         InputStream filecontent = null;
         final PrintWriter writer = response.getWriter();
-        
+        //El proceso para subir el archivo a la carpeta deseada
         try {
-            out = new FileOutputStream(new File(path/* + File.separator +*/, fileName));
-            filecontent = filePart.getInputStream();
+            out = new FileOutputStream(new File(path/* + File.separator +*/, fileName)); //la direccion final incluyendo el nombre del archivo al final
+            filecontent = filePart.getInputStream(); //contenido del archivo 
             
             int read = 0;
-            final byte[] bytes = new byte[1024];
+            final byte[] bytes = new byte[1024]; //Tamaño permitido para el archivo
             
             while((read = filecontent.read(bytes)) != -1){
                 out.write(bytes, 0, read);
             }
-            writer.println("New File" + fileName + "created at " + path);
+            writer.println("New File" + fileName + "created at " + path); //Si todo esta bien escribe lo siguiente
             LOGGER.log(Level.INFO, "file {0} being upload to {1}", new Object[]{fileName, path});
         } catch (FileNotFoundException fne){
-            writer.println("<br/> Error:" + fne.getMessage());
+            writer.println("<br/> Error:" + fne.getMessage()); //si obtiene la excepcion FileNotFound escribe este mensaje
             
             LOGGER.log(Level.SEVERE, "Problems during file upload. Error {0}", new Object[]{fne.getMessage()});
         } finally {
@@ -131,7 +132,7 @@ private final static Logger LOGGER = Logger.getLogger(SubirArchivo.class.getCano
             }
         }
     }
-    
+    //Metodo para obtener el nombre del archivo
     private String getFileName (final Part part){
         final String partHeader = part.getHeader("content-disposition");
         LOGGER.log(Level.INFO, "Part header ={0}", partHeader);
