@@ -15,7 +15,8 @@
              <li role="presentation" class="active"> </li>
             </ul>
 
-<form class="form-horizontal" action="upload" method="post" enctype="multipart/form-data">
+<form class="form-horizontal" action="${pageContext.request.contextPath}/upload" method="post" enctype="multipart/form-data">
+    <!--aqui agregamos el contectpath -->
     <div class="form-group">
         <label for="TipoEstudio" class="col-sm-2 control-label">Tipo de Adjunto:</label>
         <div class="col-sm-5">
